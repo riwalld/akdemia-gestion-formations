@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IValidationTestRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.ValidationTestBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ValidationTestFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.ValidationTest;
 import af.cmr.indyli.akdemia.business.service.IValidationTestService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link ValidationTest} entity,

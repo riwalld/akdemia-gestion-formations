@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.ITestRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.TestBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TestFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Test;
 import af.cmr.indyli.akdemia.business.service.ITestService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Test} entity, extending the

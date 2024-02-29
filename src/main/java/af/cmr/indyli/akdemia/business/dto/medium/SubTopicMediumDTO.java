@@ -10,6 +10,8 @@ import af.cmr.indyli.akdemia.business.entity.SubTopic;
  * details beyond the basic DTO but exclude complex associations like lists.
  */
 public class SubTopicMediumDTO extends SubTopicBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	public SubTopicMediumDTO() {
 	}
 }

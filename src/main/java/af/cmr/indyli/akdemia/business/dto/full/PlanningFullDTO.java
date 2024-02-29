@@ -8,4 +8,6 @@ import af.cmr.indyli.akdemia.business.entity.Planning;
  * {@link Planning} entity, it extends {@link PlanningMediumDTO}.
  */
 public class PlanningFullDTO extends PlanningMediumDTO {
+
+	private static final long serialVersionUID = 1L;
 }

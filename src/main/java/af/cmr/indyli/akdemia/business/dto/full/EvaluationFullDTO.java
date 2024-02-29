@@ -8,6 +8,8 @@ import af.cmr.indyli.akdemia.business.entity.Evaluation;
  * {@link Evaluation} entity, it extends {@link EvaluationMediumDTO}.
  */
 public class EvaluationFullDTO extends EvaluationMediumDTO {
+	private static final long serialVersionUID = 1L;
+
 	public EvaluationFullDTO() {
 	}
 }

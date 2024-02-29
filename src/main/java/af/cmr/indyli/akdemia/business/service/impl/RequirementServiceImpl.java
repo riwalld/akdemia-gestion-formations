@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IRequirementRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.RequirementBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.RequirementFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Requirement;
 import af.cmr.indyli.akdemia.business.service.IRequirementService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Requirement} entity,

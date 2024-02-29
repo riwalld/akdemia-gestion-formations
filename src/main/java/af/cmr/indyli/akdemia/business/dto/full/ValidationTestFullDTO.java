@@ -8,6 +8,8 @@ import af.cmr.indyli.akdemia.business.entity.ValidationTest;
  * {@link ValidationTest} entity, it extends {@link ValidationTestMediumDTO}.
  */
 public class ValidationTestFullDTO extends ValidationTestMediumDTO {
+	private static final long serialVersionUID = 1L;
+
 	public ValidationTestFullDTO() {
 	}
 }

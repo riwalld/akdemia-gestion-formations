@@ -13,6 +13,8 @@ import af.cmr.indyli.akdemia.business.entity.Evaluation;
  * lists.
  */
 public class EvaluationMediumDTO extends EvaluationBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	private EmployeeBasicDTO employee;
 
 	private ParticularBasicDTO particular;

@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IPrivilegeRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.PrivilegeBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.PrivilegeFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Privilege;
 import af.cmr.indyli.akdemia.business.service.IPrivilegeService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Privilege} entity, extending

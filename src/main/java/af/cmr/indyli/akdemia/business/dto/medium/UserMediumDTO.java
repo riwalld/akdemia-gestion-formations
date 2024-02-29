@@ -10,6 +10,8 @@ import af.cmr.indyli.akdemia.business.entity.User;
  * but exclude complex associations like lists.
  */
 public class UserMediumDTO extends UserBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	public UserMediumDTO() {
 	}
 }

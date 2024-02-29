@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IPlanningRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.PlanningBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.PlanningFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Planning;
 import af.cmr.indyli.akdemia.business.service.IPlanningService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Planning} entity, extending

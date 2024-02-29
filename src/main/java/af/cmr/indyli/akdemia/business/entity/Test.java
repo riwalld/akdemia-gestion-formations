@@ -1,11 +1,11 @@
 package af.cmr.indyli.akdemia.business.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.util.Date;
 
 /**
  * This class represents a Test entity. It encapsulates information about a test
@@ -14,6 +14,8 @@ import java.util.Date;
 @Entity
 @Table(name = "AKDEMIA_TEST")
 public class Test implements IEntity {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ID")
 	private Integer id;

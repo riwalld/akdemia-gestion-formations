@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import af.cmr.indyli.akdemia.business.dao.IUserRepository;
 import af.cmr.indyli.akdemia.business.dto.UserRegistrationDTO;
 import af.cmr.indyli.akdemia.business.dto.UserRegistrationResponseDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.dto.basic.UserBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.UserFullDTO;
 import af.cmr.indyli.akdemia.business.entity.User;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * Interface extending the IAbstractAkdemiaService interface for managing user,

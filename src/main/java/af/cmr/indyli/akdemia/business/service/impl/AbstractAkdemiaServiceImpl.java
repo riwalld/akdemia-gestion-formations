@@ -1,19 +1,20 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import java.nio.file.AccessDeniedException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import af.cmr.indyli.akdemia.business.dto.IDTO;
 import af.cmr.indyli.akdemia.business.entity.IEntity;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IAbstractAkdemiaService;
 import af.cmr.indyli.akdemia.business.utils.ConstRejectBusinessMessage;
 import jakarta.annotation.Resource;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.nio.file.AccessDeniedException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Abstract class implementing the IAbstractAkdemiaService interface, providing

@@ -12,6 +12,8 @@ import jakarta.persistence.Table;
 @Table(name = "AKDEMIA_MANAGER")
 public class Manager extends User {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "FIRSTNAME")
 	private String firstname;
 

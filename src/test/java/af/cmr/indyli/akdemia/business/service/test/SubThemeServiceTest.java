@@ -1,10 +1,12 @@
-package af.cmr.indyli.akdemia.business.service;
+package af.cmr.indyli.akdemia.business.service.test;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.SubTopicBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.SubTopicFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TopicFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.ISubTopicService;
+import af.cmr.indyli.akdemia.business.service.ITopicService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
@@ -63,7 +65,7 @@ public class SubThemeServiceTest {
 	void testFindAll() {
 		List<SubTopicBasicDTO> subThemes = this.subTopicService.findAll();
 
-		assertEquals(1, subThemes.size());
+		assertEquals(3, subThemes.size());
 	}
 
 	@Test

@@ -1,9 +1,10 @@
-package af.cmr.indyli.akdemia.business.service;
+package af.cmr.indyli.akdemia.business.service.test;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.ManagerBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ManagerFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.IManagerService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
@@ -53,7 +54,7 @@ public class ManagerServiceTest {
 	void testFindAll() {
 		List<ManagerBasicDTO> managers = this.managerService.findAll();
 
-		assertEquals(1, managers.size());
+		assertEquals(2, managers.size());
 	}
 
 	@Test

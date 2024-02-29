@@ -9,6 +9,8 @@ import af.cmr.indyli.akdemia.business.entity.Particular;
  */
 public class ParticularFullDTO extends ParticularMediumDTO {
 
+	private static final long serialVersionUID = 1L;
+
 	public ParticularFullDTO() {
 	}
 

@@ -1,8 +1,10 @@
 package af.cmr.indyli.akdemia.business.entity;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 /**
  * This class represents a Particular entity. It encapsulates information about
@@ -12,6 +14,8 @@ import java.util.Date;
 @Entity
 @Table(name = "AKDEMIA_PARTICULAR")
 public class Particular extends User {
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "FIRSTNAME")
 	private String firstname;

@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IEvaluationRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EvaluationBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EvaluationFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Evaluation;
 import af.cmr.indyli.akdemia.business.service.IEvaluationService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Evaluation} entity,

@@ -1,8 +1,12 @@
 package af.cmr.indyli.akdemia.business.entity;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  * This class represents an Evaluation entity. It encapsulates information about
@@ -11,6 +15,8 @@ import java.util.Date;
 @Entity
 @Table(name = "AKDEMIA_EVALUATION")
 public class Evaluation implements IEntity {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ID")
 	private Integer id;

@@ -9,6 +9,8 @@ import af.cmr.indyli.akdemia.business.entity.Employee;
  */
 public class EmployeeFullDTO extends EmployeeMediumDTO {
 
+	private static final long serialVersionUID = 1L;
+
 	public EmployeeFullDTO() {
 	}
 }

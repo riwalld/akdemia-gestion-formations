@@ -1,4 +1,4 @@
-package af.cmr.indyli.akdemia.business.service;
+package af.cmr.indyli.akdemia.business.service.test;
 
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
@@ -6,6 +6,7 @@ import af.cmr.indyli.akdemia.business.dto.basic.CompanyBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.CompanyFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.ICompanyService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
@@ -54,7 +55,7 @@ public class CompanyServiceTest {
 	void testFindAll() {
 		List<CompanyBasicDTO> companies = this.companyService.findAll();
 
-		assertEquals(1, companies.size());
+		assertEquals(2, companies.size());
 	}
 
 	@Test

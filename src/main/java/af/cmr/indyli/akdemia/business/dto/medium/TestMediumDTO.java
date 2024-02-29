@@ -10,6 +10,8 @@ import af.cmr.indyli.akdemia.business.entity.Test;
  * but exclude complex associations like lists.
  */
 public class TestMediumDTO extends TestBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	public TestMediumDTO() {
 	}
 }

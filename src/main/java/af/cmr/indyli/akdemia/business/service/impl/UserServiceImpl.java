@@ -1,5 +1,14 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import java.util.Date;
+import java.util.Optional;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IManagerRepository;
 import af.cmr.indyli.akdemia.business.dao.IPrivilegeRepository;
 import af.cmr.indyli.akdemia.business.dao.IRoleRepository;
@@ -17,14 +26,6 @@ import af.cmr.indyli.akdemia.business.service.IUserService;
 import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.Date;
-import java.util.Optional;
 
 /**
  * Service implementation class for managing {@link User} entity, extending the

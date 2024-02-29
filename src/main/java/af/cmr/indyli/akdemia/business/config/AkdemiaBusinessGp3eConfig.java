@@ -21,11 +21,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EntityScan("af.cmr.indyli.akdemia.business.entity")
 @EnableJpaRepositories("af.cmr.indyli.akdemia.business.dao")
 @ComponentScan(basePackages = { "af.cmr.indyli.akdemia.business.*" })
-public class AkdemiaBusinessGp1eConfig {
+public class AkdemiaBusinessGp3eConfig {
 
 	@Bean(value = "akdemia-modelmapper")
 	@Scope(value = "singleton")
-	public ModelMapper modelMapper() {
+	ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 

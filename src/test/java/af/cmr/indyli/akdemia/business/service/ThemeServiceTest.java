@@ -1,6 +1,6 @@
 package af.cmr.indyli.akdemia.business.service;
 
-import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp1eConfig;
+import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.TopicBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TopicFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ContextConfiguration(classes = { AkdemiaBusinessGp1eConfig.class })
+@ContextConfiguration(classes = { AkdemiaBusinessGp3eConfig.class })
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ThemeServiceTest {

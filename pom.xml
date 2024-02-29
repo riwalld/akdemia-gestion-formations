@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>af.cmr.indyli.akdemia.business</groupId>
-    <artifactId>akdemia-gp1e-business</artifactId>
+    <artifactId>akdemia-gp3e-business</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>akdemia-business</name>
     <description>akdemia-business</description>

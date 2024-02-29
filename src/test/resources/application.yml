@@ -7,7 +7,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/akdemia_test?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/akdemia-gp3e-db-test?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password:
   jpa:

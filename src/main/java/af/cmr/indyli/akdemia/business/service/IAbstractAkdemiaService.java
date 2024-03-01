@@ -1,10 +1,11 @@
 package af.cmr.indyli.akdemia.business.service;
 
-import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.nio.file.AccessDeniedException;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 
 /**
  * Interface defining basic operations for an Akdemia service, allowing

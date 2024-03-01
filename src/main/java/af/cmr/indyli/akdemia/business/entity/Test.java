@@ -1,11 +1,11 @@
 package af.cmr.indyli.akdemia.business.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.util.Date;
 
 /**
  * This class represents a Test entity. It encapsulates information about a test

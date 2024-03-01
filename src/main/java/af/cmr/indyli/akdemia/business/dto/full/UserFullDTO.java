@@ -1,10 +1,11 @@
 package af.cmr.indyli.akdemia.business.dto.full;
 
-import af.cmr.indyli.akdemia.business.dto.medium.UserMediumDTO;
-import af.cmr.indyli.akdemia.business.entity.User;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
+import af.cmr.indyli.akdemia.business.dto.medium.UserMediumDTO;
+import af.cmr.indyli.akdemia.business.entity.User;
 
 /**
  * This class represents a full Data Transfer Object (DTO) for a {@link User}

@@ -1,11 +1,12 @@
 package af.cmr.indyli.akdemia.business.dao;
 
-import af.cmr.indyli.akdemia.business.entity.User;
-import af.cmr.indyli.akdemia.business.utils.ConstsValues;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import af.cmr.indyli.akdemia.business.entity.User;
+import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 
 /**
  * This interface serves as a repository for managing {@link User} entities in

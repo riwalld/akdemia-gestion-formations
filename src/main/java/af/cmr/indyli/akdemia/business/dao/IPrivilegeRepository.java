@@ -1,13 +1,14 @@
 package af.cmr.indyli.akdemia.business.dao;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import af.cmr.indyli.akdemia.business.entity.Privilege;
 import af.cmr.indyli.akdemia.business.entity.Role;
 import af.cmr.indyli.akdemia.business.entity.User;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * This interface serves as a repository for managing {@link Privilege} entities

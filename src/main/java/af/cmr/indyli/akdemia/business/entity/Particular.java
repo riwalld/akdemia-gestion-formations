@@ -1,8 +1,10 @@
 package af.cmr.indyli.akdemia.business.entity;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 /**
  * This class represents a Particular entity. It encapsulates information about

@@ -1,5 +1,11 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import java.nio.file.AccessDeniedException;
+import java.util.Date;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.ISubTopicRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.SubTopicBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.SubTopicFullDTO;
@@ -10,11 +16,6 @@ import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
 import af.cmr.indyli.akdemia.business.utils.ConstRejectBusinessMessage;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
-
-import java.nio.file.AccessDeniedException;
-import java.util.Date;
 
 /**
  * Service implementation class for managing {@link SubTopic} entity, extending

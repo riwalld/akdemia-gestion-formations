@@ -1,11 +1,11 @@
 package af.cmr.indyli.akdemia.business.dto.full;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.medium.CompanyMediumDTO;
 import af.cmr.indyli.akdemia.business.entity.Company;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents a full Data Transfer Object (DTO) for a {@link Company}

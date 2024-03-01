@@ -1,8 +1,12 @@
 package af.cmr.indyli.akdemia.business.entity;
 
-import jakarta.persistence.*;
-
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  * This class represents an Employee entity. It encapsulates information about

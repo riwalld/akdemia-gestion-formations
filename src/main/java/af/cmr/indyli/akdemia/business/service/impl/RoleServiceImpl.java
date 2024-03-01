@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IRoleRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.RoleBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.RoleFullDTO;
@@ -7,7 +9,6 @@ import af.cmr.indyli.akdemia.business.entity.Role;
 import af.cmr.indyli.akdemia.business.service.IRoleService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 /**
  * Service implementation class for managing {@link Role} entity, extending the

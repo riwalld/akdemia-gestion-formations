@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
  * company.
  */
 @Entity
-@Table(name = "AKDEMIA_COMPANY")
+@Table(name = "AKDEMIA_COMPANY") 
 public class Company extends User implements IEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

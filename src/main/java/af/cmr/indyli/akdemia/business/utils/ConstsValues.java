@@ -14,18 +14,26 @@ public class ConstsValues {
 	public static final class ConstsDAO {
 		public static final String COMPANY_DAO_KEY = "companyDAO";
 		public static final String EMPLOYEE_DAO_KEY = "employeeDAO";
+		public static final String EMPL_SOUSCRIPTION_DAO_KEY = "employeeSouscriptionDAO";
 		public static final String EVALUATION_DAO_KEY = "evaluationDAO";
+		public static final String INTER_SESSION = "interDAO";
+		public static final String INTRA_SESSION = "intraSessionDAO";
 		public static final String MANAGER_DAO_KEY = "managerDAO";
 		public static final String PARTICULAR_DAO_KEY = "particularDAO";
+		public static final String PART_SOUSCRIPTION_DAO_KEY = "particularSouscriptionDAO";
 		public static final String PLANNING_DAO_KEY = "planificationDAO";
 		public static final String PRIVILEGE_DAO_KEY = "privilegeDAO";
 		public static final String REQUIREMENT_DAO_KEY = "requirementDAO";
 		public static final String ROLE_DAO_KEY = "roleDAO";
+		public static final String SESSION_KEY = "sessionDAO";
 		public static final String SUB_TOPIC_DAO_KEY = "subTopicDAO";
+		public static final String TRAINER_KEY = "trainerDAO";
+		public static final String TRAINING_KEY = "trainingDAO";
 		public static final String TOPIC_DAO_KEY = "topicDAO";
 		public static final String TEST_DAO_KEY = "testDAO";
 		public static final String VALIDATION_TEST_DAO_KEY = "validationTestDAO";
 		public static final String USER_DAO_KEY = "userDAO";
+
 	}
 
 	/**
@@ -49,6 +57,9 @@ public class ConstsValues {
 		public static final String USER_SERVICE_KEY = "userService";
 		public static final String USER_SERVICE = "userAuthService";
 
+        public static final String TRAINING_SERVICE_KEY = "trainingService";
+		public static final String TRAINER_SERVICE_KEY = "trainerService";
+		public static final String SESSION_SERVICE_KEY = "sessionService";
 	}
 
 }

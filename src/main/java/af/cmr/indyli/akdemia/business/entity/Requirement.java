@@ -2,12 +2,7 @@ package af.cmr.indyli.akdemia.business.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * This class represents a Requirement entity. It encapsulates information about
@@ -37,6 +32,11 @@ public class Requirement implements IEntity {
 
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
+
+
+	@ManyToOne
+	@JoinColumn(name = "TRAINING")
+	private Training training;
 
 	public Requirement() {
 	}

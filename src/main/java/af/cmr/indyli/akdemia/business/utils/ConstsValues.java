@@ -57,9 +57,13 @@ public class ConstsValues {
 		public static final String USER_SERVICE_KEY = "userService";
 		public static final String USER_SERVICE = "userAuthService";
 
-        public static final String TRAINING_SERVICE_KEY = "trainingService";
-		public static final String TRAINER_SERVICE_KEY = "trainerService";
-		public static final String SESSION_SERVICE_KEY = "sessionService";
+		public static final String TRAINING_SERVICE_KEY = "trainingService";
+        public static final String TRAINER_SERVICE_KEY = "trainerService";
+        public static final String SESSION_SERVICE_KEY = "sessionService";
+        public static final String INTER_SESSION_SERVICE_KEY = "interSessionService";
+        public static final String INTRA_SESSION_SERVICE_KEY = "intraSessionService";
+        public static final String PARTICULAR_SOUSCRIPTION_SERVICE_KEY = "particularSouscriptionService";
+        public static final String EMPLOYEE_SOUSCRIPTION_SERVICE_KEY = "employeeSouscriptionService";
 	}
 
 }

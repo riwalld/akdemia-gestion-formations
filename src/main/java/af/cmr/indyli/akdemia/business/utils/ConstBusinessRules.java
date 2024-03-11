@@ -12,6 +12,7 @@ public class ConstBusinessRules {
 	public static final String RG02 = "RG02 : Les adresses emails doivent être uniques.";
 	public static final String RG05 = "RG05 : Le titre d’un thème est unique.";
 	public static final String RG06 = "RG06 : Le titre d’un sous thème est unique.";
+	public static final String RG09 = "RG09 : Le titre d’une formation doit être unique.";
 	public static final String RG08 = "RG08 : Le mot de passe des utilisateurs doit être à partir de 04 caractères.";
 	public static final String RG11 = "RG11 : Un sous thème ayant au moins une formation ne doit pas être supprimé.";
 	public static final String RG13 = "RG13 : Lancer la procédure d’annulation si le quota de participants n’est pas atteint 15 jours avant le début.";

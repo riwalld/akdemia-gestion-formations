@@ -54,7 +54,7 @@ public class TrainingServiceImpl extends AbstractAkdemiaServiceImpl<Training, Tr
 			view.setId(entity.getId());
 			return view;
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG09);
 	}
 
 	@Override

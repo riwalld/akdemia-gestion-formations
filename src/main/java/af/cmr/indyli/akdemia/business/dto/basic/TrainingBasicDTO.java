@@ -1,23 +1,23 @@
 package af.cmr.indyli.akdemia.business.dto.basic;
 
-import java.util.Date;
-
 import af.cmr.indyli.akdemia.business.dto.IDTO;
-import af.cmr.indyli.akdemia.business.entity.Topic;
+import af.cmr.indyli.akdemia.business.entity.Trainer;
+
+import java.util.Date;;
 
 /**
- * This class represents a basic Data Transfer Object (DTO) for a {@link Topic}
+ * This class represents a basic Data Transfer Object (DTO) for a
+ * {@link Trainer}
  * entity.
  */
-public class TopicBasicDTO implements IDTO {
+public class TrainingBasicDTO implements IDTO {
 	private Integer id;
-	private String themeTitle;
+	private String title;
 	private String description;
+	private int trainingPrice;
+	private String logo;
 	private Date creationDate;
 	private Date updateDate;
-
-	public TopicBasicDTO() {
-	}
 
 	@Override
 	public Integer getId() {
@@ -29,12 +29,12 @@ public class TopicBasicDTO implements IDTO {
 		this.id = id;
 	}
 
-	public String getThemeTitle() {
-		return themeTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setThemeTitle(String themeTitle) {
-		this.themeTitle = themeTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -45,18 +45,38 @@ public class TopicBasicDTO implements IDTO {
 		this.description = description;
 	}
 
+	public int getTrainingPrice() {
+		return trainingPrice;
+	}
+
+	public void setTrainingPrice(int trainingPrice) {
+		this.trainingPrice = trainingPrice;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	@Override
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
+	@Override
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
+	@Override
 	public Date getUpdateDate() {
 		return updateDate;
 	}
 
+	@Override
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}

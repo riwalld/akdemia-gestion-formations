@@ -11,7 +11,7 @@ import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
  *
  * @see IAbstractAkdemiaService
  */
-public interface EmployeeSouscriptionService
+public interface IEmployeeSouscriptionService
 		extends IAbstractAkdemiaService<EmployeeSouscription, EmployeeSouscriptionBasicDTO, EmployeeSouscriptionFullDTO, IEmployeeSouscriptionRepository> {
 
 }

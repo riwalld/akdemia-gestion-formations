@@ -31,6 +31,8 @@ public class Company extends User implements IEntity {
 	@OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
 	private List<Employee> employees = new ArrayList<>();
 
+	@OneToMany(mappedBy = "company")
+	private List<IntraSession> intraSessions = new ArrayList<>();
 	@Override
 	public Integer getId() {
 		return id;

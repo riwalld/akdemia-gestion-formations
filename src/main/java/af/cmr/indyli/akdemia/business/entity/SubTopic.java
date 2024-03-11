@@ -40,7 +40,8 @@ public class SubTopic implements IEntity {
 
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
-
+	@ManyToMany(mappedBy = "subtopics")
+	private List<Training> trainings = new ArrayList<>();
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "compose", joinColumns = @JoinColumn(name = "ID_AKDEMIA_SUB_THEME"), inverseJoinColumns = @JoinColumn(name = "ID"))

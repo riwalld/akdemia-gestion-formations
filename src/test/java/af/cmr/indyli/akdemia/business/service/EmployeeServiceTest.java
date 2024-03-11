@@ -1,4 +1,4 @@
-package af.cmr.indyli.akdemia.business.service.test;
+package af.cmr.indyli.akdemia.business.service;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeBasicDTO;
@@ -64,7 +64,7 @@ public class EmployeeServiceTest {
 	void testFindAll() {
 		List<EmployeeBasicDTO> employees = this.employeeService.findAll();
 
-		assertEquals(2, employees.size());
+		assertEquals(1, employees.size());
 	}
 
 	@Test

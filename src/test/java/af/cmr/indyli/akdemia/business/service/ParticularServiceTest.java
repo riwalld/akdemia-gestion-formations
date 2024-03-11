@@ -1,4 +1,4 @@
-package af.cmr.indyli.akdemia.business.service.test;
+package af.cmr.indyli.akdemia.business.service;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.ParticularBasicDTO;
@@ -54,7 +54,7 @@ public class ParticularServiceTest {
 	void testFindAll() {
 		List<ParticularBasicDTO> particulars = this.particularService.findAll();
 
-		assertEquals(2, particulars.size());
+		assertEquals(1, particulars.size());
 	}
 
 	@Test

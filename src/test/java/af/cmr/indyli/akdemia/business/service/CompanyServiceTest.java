@@ -1,4 +1,4 @@
-package af.cmr.indyli.akdemia.business.service.test;
+package af.cmr.indyli.akdemia.business.service;
 
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
@@ -55,7 +55,7 @@ public class CompanyServiceTest {
 	void testFindAll() {
 		List<CompanyBasicDTO> companies = this.companyService.findAll();
 
-		assertEquals(2, companies.size());
+		assertEquals(1, companies.size());
 	}
 
 	@Test

@@ -26,12 +26,12 @@ import java.util.Optional;
  *
  * @see AbstractAkdemiaServiceImpl
  */
-@Service(ConstsValues.ServiceKeys.TRAINER_SERVICE_KEY)
+@Service(ConstsValues.ServiceKeys.PARTICULAR_SOUSCRIPTION_SERVICE_KEY)
 public class ParticularSouscriptionImpl extends
 		AbstractAkdemiaServiceImpl<ParticularSouscription, ParticularSouscriptionBasicDTO, ParticularSouscriptionFullDTO, IParticularSouscriptionRepository>
 		implements IParticularSouscriptionService {
 
-	@Resource(name = ConstsValues.ConstsDAO.TRAINER_KEY)
+	@Resource(name = ConstsValues.ConstsDAO.PART_SOUSCRIPTION_DAO_KEY)
 	private IParticularSouscriptionRepository ParticularSouscriptionRepository;
 
 	public ParticularSouscriptionImpl() {

@@ -14,5 +14,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository(value = ConstsValues.ConstsDAO.TRAINER_KEY)
 public interface ITrainerRepository extends JpaRepository<Trainer, Integer> {
+	
     Trainer findTrainerByEmail(String email);
 }

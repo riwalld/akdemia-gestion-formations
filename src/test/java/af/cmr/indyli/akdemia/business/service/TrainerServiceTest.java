@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 
+import java.io.Console;
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
 import java.util.List;
@@ -32,45 +33,49 @@ public class TrainerServiceTest {
 
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
-		TrainerFullDTO traning = getSampleTheme();
-		this.trainerForAllTest = this.TrainerService.create(traning);
+		TrainerFullDTO trainer = getSampletrainer();
+		trainer.setFirstName("myName");
+		this.trainerForAllTest = this.TrainerService.create(trainer);
 
 		System.out.println("ID CREATE... " + trainerForAllTest.getId());
 
-		assertNotNull(traning);
+		assertNotNull(trainer);
 	}
 
 	@Test
 	void testCreate() throws AkdemiaBusinessException {
-		TrainerFullDTO theme = getSampleTheme();
-		theme.setEmail("testNew@gmail.com");
-		theme = this.TrainerService.create(theme);
-		idCreatedTrainer = theme.getId();
+		TrainerFullDTO trainer = getSampletrainer();
+		trainer.setEmail("testNew@gmail.com");
+		trainer.setFirstName("myName");
+		trainer = this.TrainerService.create(trainer);
+		idCreatedTrainer = trainer.getId();
 
-		assertNotNull(theme);
+		assertNotNull(trainer);
 	}
 
 	@Test
 	void testFindAll() {
-		List<TrainerBasicDTO> themes = this.TrainerService.findAll();
-		assertEquals(1, themes.size());
+		List<TrainerBasicDTO> trainers = this.TrainerService.findAll();
+		assertEquals(1, trainers.size());
 	}
 
 	@Test
 	void testFindById() throws AkdemiaBusinessException {
-		TrainerFullDTO theme = this.TrainerService.findById(this.trainerForAllTest.getId());
-		assertNotNull(theme);
-		assertEquals(this.trainerForAllTest.getEmail(), theme.getEmail());
+		TrainerFullDTO trainer = this.TrainerService.findById(this.trainerForAllTest.getId());
+		assertNotNull(trainer);
+		System.out.println(trainer.getFirstName());
+		assertNotNull(trainer.getFirstName());
+		assertEquals(this.trainerForAllTest.getEmail(), trainer.getEmail());
 	}
 
 	@Test
 	void testUpdate() throws AkdemiaBusinessException, AccessDeniedException {
-		TrainerFullDTO themeToUpdate = getSampleTheme();
+		TrainerFullDTO trainerToUpdate = getSampletrainer();
 		String updateEmail = "testmodif@gmail.com";
-		themeToUpdate.setId(this.trainerForAllTest.getId());
-		themeToUpdate.setEmail(updateEmail);
+		trainerToUpdate.setId(this.trainerForAllTest.getId());
+		trainerToUpdate.setEmail(updateEmail);
 
-		TrainerFullDTO updatedTrainer = this.TrainerService.update(themeToUpdate);
+		TrainerFullDTO updatedTrainer = this.TrainerService.update(trainerToUpdate);
 		assertEquals(updateEmail, updatedTrainer.getEmail());
 	}
 
@@ -90,12 +95,12 @@ public class TrainerServiceTest {
 			this.TrainerService.deleteById(idCreatedTrainer);
 	}
 
-	TrainerFullDTO getSampleTheme() {
-		TrainerFullDTO theme = new TrainerFullDTO();
-		theme.setEmail("My Trainer");
-		theme.setActivity("Developer");
-		theme.setCreationDate(new Date());
+	TrainerFullDTO getSampletrainer() {
+		TrainerFullDTO trainer = new TrainerFullDTO();
+		trainer.setEmail("My Trainer");
+		trainer.setActivity("Developer");
+		trainer.setCreationDate(new Date());
 
-		return theme;
+		return trainer;
 	}
 }

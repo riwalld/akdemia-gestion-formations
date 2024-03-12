@@ -12,7 +12,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "AKDEMIA_TRAINER")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Trainer extends User {
 	@Column(name = "ACTIVITY")
 	private String activity;
@@ -27,5 +26,53 @@ public class Trainer extends User {
 
 	@OneToMany(mappedBy = "trainer")
 	private List<Session> sessions = new ArrayList<>();
+
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+
+	public String getCvLink() {
+		return cvLink;
+	}
+
+	public void setCvLink(String cvLink) {
+		this.cvLink = cvLink;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
 
 }

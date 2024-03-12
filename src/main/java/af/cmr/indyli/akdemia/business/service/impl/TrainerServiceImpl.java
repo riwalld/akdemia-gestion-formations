@@ -3,9 +3,12 @@ package af.cmr.indyli.akdemia.business.service.impl;
 import af.cmr.indyli.akdemia.business.dao.ITrainerRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.TrainerBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TrainerFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.TrainerFullDTO;
+import af.cmr.indyli.akdemia.business.entity.Trainer;
 import af.cmr.indyli.akdemia.business.entity.Trainer;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.ITrainerService;
+import af.cmr.indyli.akdemia.business.service.IUserService;
 import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
 import af.cmr.indyli.akdemia.business.utils.ConstRejectBusinessMessage;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
@@ -30,7 +33,9 @@ public class TrainerServiceImpl extends AbstractAkdemiaServiceImpl<Trainer, Trai
 
 	@Resource(name = ConstsValues.ConstsDAO.TRAINER_KEY)
 	private ITrainerRepository TrainerRepository;
-
+	@Resource(name = ConstsValues.ServiceKeys.USER_SERVICE_KEY)
+	private IUserService userService;
+	
 	public TrainerServiceImpl() {
 		super(Trainer.class, TrainerBasicDTO.class, TrainerFullDTO.class);
 	}
@@ -43,22 +48,18 @@ public class TrainerServiceImpl extends AbstractAkdemiaServiceImpl<Trainer, Trai
 
 	@Override
 	public TrainerFullDTO create(TrainerFullDTO view) throws AkdemiaBusinessException {
-		Trainer Trainer = this.getDAO().findTrainerByEmail(view.getEmail());
-
-		if (Trainer== null) {
+		if (!userService.isExistUserByEmail(view.getEmail())) {
 			view.setCreationDate(new Date());
 			Trainer entity = this.getDAO().saveAndFlush(this.getModelMapper().map(view, Trainer.class));
-			view.setId(entity.getId());
-			return view;
+
+			return this.getModelMapper().map(entity, TrainerFullDTO.class);
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG02);
 	}
 
 	@Override
 	public TrainerFullDTO update(TrainerFullDTO viewToUpdate) throws AkdemiaBusinessException, AccessDeniedException {
-		boolean isTrainerExist = this.findAll().stream().anyMatch(
-				p -> viewToUpdate.getEmail().equals(p.getEmail()) && !viewToUpdate.getId().equals(p.getId()));
-		if (!isTrainerExist) {
+		if (!userService.isExistUserByEmail(viewToUpdate.getEmail(), viewToUpdate.getId())) {
 			viewToUpdate.setUpdateDate(new Date());
 			Trainer entity = this.getDAO().findById(viewToUpdate.getId()).orElse(null);
 			if (entity != null) {
@@ -69,18 +70,6 @@ public class TrainerServiceImpl extends AbstractAkdemiaServiceImpl<Trainer, Trai
 			}
 			return viewToUpdate;
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG06);
-	}
-	
-
-	@Override
-	public void deleteById(int id) throws AkdemiaBusinessException, AccessDeniedException {
-		var tmpTrainer = this.findById(id);
-
-		if (tmpTrainer == null) {
-			throw new AkdemiaBusinessException(ConstRejectBusinessMessage.DELETE_OBJECT_NOT_FOUND);
-		}else {
-			this.getDAO().deleteById(id);
-		} 
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG02);
 	}
 }

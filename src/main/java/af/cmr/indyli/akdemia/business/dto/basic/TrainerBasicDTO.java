@@ -21,9 +21,9 @@ public class TrainerBasicDTO implements IDTO {
 	private String activity;
 	private String cvLink;
 
-	private String firstName;
+	private String firstname;
 
-	private String lastName;
+	private String lastname;
 
 	private String gender;
 	private Date creationDate;
@@ -124,19 +124,19 @@ public class TrainerBasicDTO implements IDTO {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 
 	public String getGender() {

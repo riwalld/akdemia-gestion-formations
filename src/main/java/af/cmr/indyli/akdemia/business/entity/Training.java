@@ -33,12 +33,13 @@ public class Training implements IEntity {
 
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
-
-	@OneToMany(mappedBy = "training", fetch = FetchType.LAZY)
-	private List<Requirement> requirements = new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_AKDEMIA_REQUIREMENT")
+	private Requirement requirement;
 
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "content", joinColumns = @JoinColumn(name = "ID_AKDEMIA_TRAINING"), inverseJoinColumns = @JoinColumn(name = "ID"))
 	private List<SubTopic> subtopics = new ArrayList<>();
 
@@ -107,12 +108,12 @@ public class Training implements IEntity {
 		this.logo = logo;
 	}
 
-	public List<Requirement> getRequirements() {
-		return requirements;
+	public Requirement getRequirement() {
+		return requirement;
 	}
 
-	public void setRequirements(List<Requirement> requirements) {
-		this.requirements = requirements;
+	public void setRequirement(Requirement requirement) {
+		this.requirement = requirement;
 	}
 
 	public List<SubTopic> getSubtopics() {

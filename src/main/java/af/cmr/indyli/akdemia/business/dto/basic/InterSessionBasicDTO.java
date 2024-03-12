@@ -15,18 +15,17 @@ import java.util.List;
 
 public class InterSessionBasicDTO implements IDTO {
 	private Integer id;
-	String code;
-	int duration;
-	float price;
-	String description;
-	String status;
-	Date date;
-	String location;
-	int sessionScore;
+	private String code;
+	private int duration;
+	private float price;
+	private String description;
+	private String status;
+	private Date date;
+	private String location;
+	private int sessionScore;
 	private Date creationDate;
 	private Date updateDate;
 	private int minParticipants;
-	private List<ParticularSouscription> particularSouscriptions = new ArrayList<>();
 
 	@Override
 	public Integer getId() {
@@ -120,5 +119,13 @@ public class InterSessionBasicDTO implements IDTO {
 	@Override
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public int getMinParticipants() {
+		return minParticipants;
+	}
+
+	public void setMinParticipants(int minParticipants) {
+		this.minParticipants = minParticipants;
 	}
 }

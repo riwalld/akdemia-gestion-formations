@@ -10,6 +10,8 @@ import af.cmr.indyli.akdemia.business.entity.Role;
  * but exclude complex associations like lists.
  */
 public class RoleMediumDTO extends RoleBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	public RoleMediumDTO() {
 	}
 }

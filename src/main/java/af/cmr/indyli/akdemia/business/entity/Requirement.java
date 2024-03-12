@@ -1,13 +1,9 @@
 package af.cmr.indyli.akdemia.business.entity;
 
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * This class represents a Requirement entity. It encapsulates information about
@@ -16,6 +12,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "AKDEMIA_REQUIREMENT")
 public class Requirement implements IEntity {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -36,8 +34,28 @@ public class Requirement implements IEntity {
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
 
+
+	@OneToMany(mappedBy = "requirement", fetch = FetchType.EAGER)
+	private List<Training> trainings;
+
 	public Requirement() {
 	}
+
+	
+	
+	
+	
+	public List<Training> getTrainings() {
+		return trainings;
+	}
+
+	public void setTrainings(List<Training> trainings) {
+		this.trainings = trainings;
+	}
+
+
+
+
 
 	@Override
 	public Integer getId() {

@@ -1,10 +1,10 @@
 package af.cmr.indyli.akdemia.business.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * This class represents a Particular entity. It encapsulates information about
@@ -14,6 +14,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "AKDEMIA_PARTICULAR")
 public class Particular extends User {
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "FIRSTNAME")
 	private String firstname;
@@ -31,6 +33,18 @@ public class Particular extends User {
 
 	@Column(name = "BIRTH_DATE")
 	private Date birthDate;
+
+
+	@OneToMany(mappedBy = "particular")
+	private List<ParticularSouscription> particularSouscriptions = new ArrayList<>();
+
+	public List<ParticularSouscription> getParticularSouscriptions() {
+		return particularSouscriptions;
+	}
+
+	public void setParticularSouscriptions(List<ParticularSouscription> particularSouscriptions) {
+		this.particularSouscriptions = particularSouscriptions;
+	}
 
 	public Particular() {
 	}

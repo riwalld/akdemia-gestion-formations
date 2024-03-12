@@ -19,6 +19,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "AKDEMIA_COMPANY") 
 public class Company extends User implements IEntity {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -31,6 +32,8 @@ public class Company extends User implements IEntity {
 	@OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
 	private List<Employee> employees = new ArrayList<>();
 
+	@OneToMany(mappedBy = "company")
+	private List<IntraSession> intraSessions = new ArrayList<>();
 	@Override
 	public Integer getId() {
 		return id;

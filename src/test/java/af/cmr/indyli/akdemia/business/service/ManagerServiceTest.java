@@ -4,6 +4,7 @@ import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.ManagerBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ManagerFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.IManagerService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
@@ -32,8 +33,8 @@ public class ManagerServiceTest {
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
 		ManagerFullDTO manager = getSampleManager();
+		manager.setFirstname("myname");
 		manager = this.managerService.create(manager);
-
 		this.managerForAllTest = manager;
 
 		assertNotNull(manager);
@@ -60,6 +61,7 @@ public class ManagerServiceTest {
 	void testFindById() throws AkdemiaBusinessException {
 		ManagerFullDTO manager = this.managerService.findById(this.managerForAllTest.getId());
 		assertNotNull(manager);
+		assertNotNull(manager.getFirstname());
 		assertEquals(manager.getAddress(), this.managerForAllTest.getAddress());
 	}
 

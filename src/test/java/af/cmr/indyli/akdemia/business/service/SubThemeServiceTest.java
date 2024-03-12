@@ -5,6 +5,8 @@ import af.cmr.indyli.akdemia.business.dto.basic.SubTopicBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.SubTopicFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TopicFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.ISubTopicService;
+import af.cmr.indyli.akdemia.business.service.ITopicService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;

@@ -13,6 +13,7 @@ import af.cmr.indyli.akdemia.business.entity.Privilege;
  * lists.
  */
 public class PlanningMediumDTO extends PlanningBasicDTO {
+	private static final long serialVersionUID = 1L;
 	private CompanyBasicDTO company;
 
 	public PlanningMediumDTO() {

@@ -12,6 +12,7 @@ import af.cmr.indyli.akdemia.business.entity.Privilege;
  * details beyond the basic DTO but exclude complex associations like lists.
  */
 public class PrivilegeMediumDTO extends PrivilegeBasicDTO {
+	private static final long serialVersionUID = 1L;
 	private UserBasicDTO user;
 	private RoleBasicDTO role;
 

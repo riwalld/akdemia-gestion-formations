@@ -10,4 +10,6 @@ import af.cmr.indyli.akdemia.business.entity.Company;
  * beyond the basic DTO but exclude complex associations like lists.
  */
 public class CompanyMediumDTO extends CompanyBasicDTO {
+
+	private static final long serialVersionUID = 1L;
 }

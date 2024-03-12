@@ -31,6 +31,8 @@ import jakarta.persistence.Table;
 @Table(name = "AKDEMIA_USER")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User implements IEntity, UserDetails {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")

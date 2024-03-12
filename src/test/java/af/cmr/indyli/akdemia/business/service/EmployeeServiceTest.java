@@ -5,6 +5,8 @@ import af.cmr.indyli.akdemia.business.dto.basic.EmployeeBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.CompanyFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.ICompanyService;
+import af.cmr.indyli.akdemia.business.service.IEmployeeService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;

@@ -4,6 +4,7 @@ import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.ParticularBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ParticularFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.IParticularService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;

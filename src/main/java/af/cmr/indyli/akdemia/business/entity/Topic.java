@@ -22,6 +22,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "AKDEMIA_THEME")
 public class Topic implements IEntity {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

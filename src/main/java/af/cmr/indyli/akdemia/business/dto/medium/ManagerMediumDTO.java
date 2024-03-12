@@ -11,4 +11,6 @@ import af.cmr.indyli.akdemia.business.entity.Manager;
  */
 
 public class ManagerMediumDTO extends ManagerBasicDTO {
+
+	private static final long serialVersionUID = 1L;
 }

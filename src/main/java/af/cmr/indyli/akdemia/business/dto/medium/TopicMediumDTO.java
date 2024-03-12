@@ -10,6 +10,8 @@ import af.cmr.indyli.akdemia.business.entity.Topic;
  * DTO but exclude complex associations like lists.
  */
 public class TopicMediumDTO extends TopicBasicDTO {
+	private static final long serialVersionUID = 1L;
+
 	public TopicMediumDTO() {
 	}
 }

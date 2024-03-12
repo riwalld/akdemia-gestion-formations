@@ -12,6 +12,7 @@ import af.cmr.indyli.akdemia.business.entity.Company;
  * entity, it extends {@link CompanyMediumDTO}.
  */
 public class CompanyFullDTO extends CompanyMediumDTO {
+	private static final long serialVersionUID = 1L;
 	private List<EmployeeBasicDTO> employees = new ArrayList<>();
 
 

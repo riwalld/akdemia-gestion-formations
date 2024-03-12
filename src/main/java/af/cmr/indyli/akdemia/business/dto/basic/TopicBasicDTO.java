@@ -14,7 +14,6 @@ public class TopicBasicDTO implements IDTO {
 	private String themeTitle;
 	private String description;
 	private Date creationDate;
-
 	private Date updateDate;
 
 	public TopicBasicDTO() {

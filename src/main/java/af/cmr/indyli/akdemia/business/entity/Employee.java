@@ -1,12 +1,10 @@
 package af.cmr.indyli.akdemia.business.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * This class represents an Employee entity. It encapsulates information about
@@ -15,6 +13,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "AKDEMIA_EMPLOYEE")
 public class Employee extends User {
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "FIRSTNAME")
 	private String firstname;
@@ -50,6 +50,9 @@ public class Employee extends User {
 	@ManyToOne
 	@JoinColumn(name = "ID_AKDEMIA_COMPANY")
 	private Company company;
+	@OneToMany(mappedBy = "employee")
+	private List<EmployeeSouscription> employeeSouscriptions = new ArrayList<>();
+
 	public Employee() {
 	}
 

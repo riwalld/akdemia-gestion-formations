@@ -2,6 +2,7 @@ package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IIntraSessionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.InterSessionFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.IntraSessionFullDTO;
 import af.cmr.indyli.akdemia.business.entity.IntraSession;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -82,5 +84,9 @@ public class IntraSessionServiceImpl extends AbstractAkdemiaServiceImpl<IntraSes
 		}else {
 			this.getDAO().deleteById(id);
 		}
+	}
+	@Override
+	public List<IntraSessionFullDTO> findAllFull() {
+		return this.getDAO().findAll().stream().map(p -> this.getModelMapper().map(p, IntraSessionFullDTO.class)).toList();
 	}
 }

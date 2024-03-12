@@ -72,7 +72,7 @@ public class TrainingServiceImpl extends AbstractAkdemiaServiceImpl<Training, Tr
 			}
 			return viewToUpdate;
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG06);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG21);
 	}
 	
 

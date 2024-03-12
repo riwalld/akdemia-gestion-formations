@@ -26,7 +26,6 @@ public class IntraSessionBasicDTO implements IDTO {
 	private int sessionScore;
 	private Date creationDate;
 	private Date updateDate;
-	private List<EmployeeSouscription> employeeSouscriptions = new ArrayList<>();
 	private Company company;
 
 	@Override

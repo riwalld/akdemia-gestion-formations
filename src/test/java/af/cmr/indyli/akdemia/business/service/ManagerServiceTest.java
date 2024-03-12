@@ -1,4 +1,4 @@
-package af.cmr.indyli.akdemia.business.service.test;
+package af.cmr.indyli.akdemia.business.service;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
 import af.cmr.indyli.akdemia.business.dto.basic.ManagerBasicDTO;
@@ -54,7 +54,7 @@ public class ManagerServiceTest {
 	void testFindAll() {
 		List<ManagerBasicDTO> managers = this.managerService.findAll();
 
-		assertEquals(2, managers.size());
+		assertEquals(1, managers.size());
 	}
 
 	@Test

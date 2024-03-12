@@ -1,9 +1,11 @@
-package af.cmr.indyli.akdemia.business.service.test;
+package af.cmr.indyli.akdemia.business.service;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
-import af.cmr.indyli.akdemia.business.dto.basic.TopicBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.SubTopicBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.SubTopicFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.TopicFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
+import af.cmr.indyli.akdemia.business.service.ISubTopicService;
 import af.cmr.indyli.akdemia.business.service.ITopicService;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
@@ -23,57 +25,67 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = { AkdemiaBusinessGp3eConfig.class })
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ThemeServiceTest {
+public class SubThemeServiceTest {
 
 	@Resource(name = ConstsValues.ServiceKeys.TOPIC_SERVICE_KEY)
 	private ITopicService topicService;
+
+	@Resource(name = ConstsValues.ServiceKeys.SUB_TOPIC_SERVICE_KEY)
+	private ISubTopicService subTopicService;
+	private SubTopicFullDTO subThemeForAllTest = null;
 	private TopicFullDTO themeForAllTest = null;
 
-	private Integer idCreatedTheme = null;
+	private Integer idSubThemeCreated = null;
 
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
 		TopicFullDTO theme = getSampleTheme();
 		this.themeForAllTest = this.topicService.create(theme);
 
-		System.out.println("ID CREATE... " + themeForAllTest.getId());
+		SubTopicFullDTO subTheme = getSampleSubTheme();
+		this.subThemeForAllTest = this.subTopicService.create(subTheme);
 
-		assertNotNull(theme);
+		assertNotNull(subTheme);
 	}
 
 	@Test
 	void testCreate() throws AkdemiaBusinessException {
-		TopicFullDTO theme = getSampleTheme();
-		theme.setThemeTitle("Language du web");
-		theme = this.topicService.create(theme);
-		idCreatedTheme = theme.getId();
+		SubTopicFullDTO subTheme = getSampleSubTheme();
 
-		assertNotNull(theme);
+		subTheme.setThemes(List.of(this.themeForAllTest));
+		subTheme.setSubthemeTitle("Laravel framework");
+
+		subTheme = this.subTopicService.create(subTheme);
+		idSubThemeCreated = subTheme.getId();
+
+		assertNotNull(subTheme);
 	}
 
 	@Test
 	void testFindAll() {
-		List<TopicBasicDTO> themes = this.topicService.findAll();
+		List<SubTopicBasicDTO> subThemes = this.subTopicService.findAll();
 
-		assertEquals(4, themes.size());
+		assertEquals(1, subThemes.size());
 	}
 
 	@Test
 	void testFindById() throws AkdemiaBusinessException {
-		TopicFullDTO theme = this.topicService.findById(this.themeForAllTest.getId());
-		assertNotNull(theme);
-		assertEquals(this.themeForAllTest.getThemeTitle(), theme.getThemeTitle());
+		SubTopicFullDTO subTheme = this.subTopicService.findById(this.subThemeForAllTest.getId());
+
+		assertNotNull(subTheme);
+		assertEquals(this.subThemeForAllTest.getSubthemeTitle(), subTheme.getSubthemeTitle());
 	}
 
 	@Test
 	void testUpdate() throws AkdemiaBusinessException, AccessDeniedException {
-		TopicFullDTO themeToUpdate = getSampleTheme();
+		SubTopicFullDTO subThemeToUpdate = getSampleSubTheme();
 		String updateName = "Updated Name";
-		themeToUpdate.setId(this.themeForAllTest.getId());
-		themeToUpdate.setThemeTitle(updateName);
 
-		TopicFullDTO updatedTheme = this.topicService.update(themeToUpdate);
-		assertEquals(updateName, updatedTheme.getThemeTitle());
+		subThemeToUpdate.setId(this.subThemeForAllTest.getId());
+		subThemeToUpdate.setSubthemeTitle(updateName);
+
+		SubTopicFullDTO updatedSubTheme = this.subTopicService.update(subThemeToUpdate);
+		assertEquals(updateName, updatedSubTheme.getSubthemeTitle());
 	}
 
 	@Test
@@ -81,15 +93,28 @@ public class ThemeServiceTest {
 		this.topicService.deleteById(this.themeForAllTest.getId());
 
 		assertNull(this.topicService.findById(this.themeForAllTest.getId()));
-		themeForAllTest = null;
+		this.themeForAllTest = null;
 	}
 
 	@AfterEach
 	void rollback() throws AkdemiaBusinessException, AccessDeniedException {
-		if (themeForAllTest != null)
+		if (this.subThemeForAllTest != null)
+			this.subTopicService.deleteById(this.subThemeForAllTest.getId());
+		if (idSubThemeCreated != null)
+			this.subTopicService.deleteById(idSubThemeCreated);
+		if (this.themeForAllTest != null)
 			this.topicService.deleteById(this.themeForAllTest.getId());
-		if (idCreatedTheme != null)
-			this.topicService.deleteById(idCreatedTheme);
+
+	}
+
+	SubTopicFullDTO getSampleSubTheme() {
+		SubTopicFullDTO subTheme = new SubTopicFullDTO();
+		subTheme.setSubthemeTitle("Example SubTopic");
+		subTheme.setDescription("Example subtheme description");
+		subTheme.setCreationDate(new Date());
+		subTheme.setUpdateDate(new Date());
+
+		return subTheme;
 	}
 
 	TopicFullDTO getSampleTheme() {

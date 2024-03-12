@@ -33,8 +33,8 @@ public class ManagerServiceTest {
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
 		ManagerFullDTO manager = getSampleManager();
+		manager.setFirstname("myname");
 		manager = this.managerService.create(manager);
-
 		this.managerForAllTest = manager;
 
 		assertNotNull(manager);
@@ -61,6 +61,7 @@ public class ManagerServiceTest {
 	void testFindById() throws AkdemiaBusinessException {
 		ManagerFullDTO manager = this.managerService.findById(this.managerForAllTest.getId());
 		assertNotNull(manager);
+		assertNotNull(manager.getFirstname());
 		assertEquals(manager.getAddress(), this.managerForAllTest.getAddress());
 	}
 

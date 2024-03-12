@@ -20,11 +20,8 @@ public class TrainerBasicDTO implements IDTO {
 	private String photo;
 	private String activity;
 	private String cvLink;
-
 	private String firstname;
-
 	private String lastname;
-
 	private String gender;
 	private Date creationDate;
 	private Date updateDate;

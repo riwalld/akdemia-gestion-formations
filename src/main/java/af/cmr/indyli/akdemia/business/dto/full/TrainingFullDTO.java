@@ -17,7 +17,7 @@ import af.cmr.indyli.akdemia.business.entity.Training;
 public class TrainingFullDTO extends TrainingMediumDTO {
 	
 	private static final long serialVersionUID = 1L;
-	private List<SubTopicBasicDTO> subtopics = new ArrayList<>();
+	private List<SubTopicFullDTO> subtopics = new ArrayList<>();
 	private List<SessionBasicDTO> sessions = new ArrayList<>();
 	
 	
@@ -27,10 +27,10 @@ public class TrainingFullDTO extends TrainingMediumDTO {
 	public void setSessions(List<SessionBasicDTO> sessions) {
 		this.sessions = sessions;
 	}
-	public List<SubTopicBasicDTO> getSubtopics() {
+	public List<SubTopicFullDTO> getSubtopics() {
 		return subtopics;
 	}
-	public void setSubtopics(List<SubTopicBasicDTO> subtopics) {
+	public void setSubtopics(List<SubTopicFullDTO> subtopics) {
 		this.subtopics = subtopics;
 	}
 	

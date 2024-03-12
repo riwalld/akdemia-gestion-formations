@@ -34,7 +34,7 @@ public class TrainerServiceTest {
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
 		TrainerFullDTO trainer = getSampletrainer();
-		trainer.setFirstName("myName");
+		trainer.setFirstname("myName");
 		this.trainerForAllTest = this.TrainerService.create(trainer);
 
 		System.out.println("ID CREATE... " + trainerForAllTest.getId());
@@ -46,7 +46,7 @@ public class TrainerServiceTest {
 	void testCreate() throws AkdemiaBusinessException {
 		TrainerFullDTO trainer = getSampletrainer();
 		trainer.setEmail("testNew@gmail.com");
-		trainer.setFirstName("myName");
+		trainer.setFirstname("myName");
 		trainer = this.TrainerService.create(trainer);
 		idCreatedTrainer = trainer.getId();
 
@@ -63,8 +63,8 @@ public class TrainerServiceTest {
 	void testFindById() throws AkdemiaBusinessException {
 		TrainerFullDTO trainer = this.TrainerService.findById(this.trainerForAllTest.getId());
 		assertNotNull(trainer);
-		System.out.println(trainer.getFirstName());
-		assertNotNull(trainer.getFirstName());
+		System.out.println(trainer.getFirstname());
+		assertNotNull(trainer.getFirstname());
 		assertEquals(this.trainerForAllTest.getEmail(), trainer.getEmail());
 	}
 

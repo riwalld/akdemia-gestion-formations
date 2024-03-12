@@ -1,6 +1,7 @@
 package af.cmr.indyli.akdemia.business.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -34,12 +35,27 @@ public class Requirement implements IEntity {
 	private Date updateDate;
 
 
-	@ManyToOne
-	@JoinColumn(name = "TRAINING")
-	private Training training;
+	@OneToMany(mappedBy = "requirement", fetch = FetchType.EAGER)
+	private List<Training> trainings;
 
 	public Requirement() {
 	}
+
+	
+	
+	
+	
+	public List<Training> getTrainings() {
+		return trainings;
+	}
+
+	public void setTrainings(List<Training> trainings) {
+		this.trainings = trainings;
+	}
+
+
+
+
 
 	@Override
 	public Integer getId() {

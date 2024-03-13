@@ -1,9 +1,13 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IIntraSessionRepository;
+import af.cmr.indyli.akdemia.business.dao.ITrainingRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
-import af.cmr.indyli.akdemia.business.dto.full.InterSessionFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.IntraSessionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.IntraSessionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.IntraSessionFullDTO;
+import af.cmr.indyli.akdemia.business.entity.IntraSession;
+import af.cmr.indyli.akdemia.business.entity.IntraSession;
 import af.cmr.indyli.akdemia.business.entity.IntraSession;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IIntraSessionService;
@@ -32,6 +36,9 @@ public class IntraSessionServiceImpl extends AbstractAkdemiaServiceImpl<IntraSes
 
 	@Resource(name = ConstsValues.ConstsDAO.INTRA_SESSION)
 	private IIntraSessionRepository sessionRepository;
+	
+	@Resource(name = ConstsValues.ConstsDAO.TRAINING_KEY)
+	private ITrainingRepository trainingRepository;
 
 	public IntraSessionServiceImpl() {
 		super(IntraSession.class, IntraSessionBasicDTO.class, IntraSessionFullDTO.class);
@@ -45,15 +52,15 @@ public class IntraSessionServiceImpl extends AbstractAkdemiaServiceImpl<IntraSes
 
 	@Override
 	public IntraSessionFullDTO create(IntraSessionFullDTO view) throws AkdemiaBusinessException {
-		Optional<IntraSession> session = this.getDAO().findById(view.getId());
+		List<IntraSession> session = this.getDAO().findByTrainingTitle(view.getTraining().getTitle());
 
-		if (session.isEmpty()) {
+		if (trainingRepository.findByTitle(view.getTraining().getTitle()) != null) {
 			view.setCreationDate(new Date());
-			IntraSession entity = this.getDAO().saveAndFlush(this.getModelMapper().map(view, IntraSession.class));
-			view.setId(entity.getId());
-			return view;
+			IntraSession entity = this.getDAO()
+					.saveAndFlush(this.getModelMapper().map(view, IntraSession.class));
+			return this.getModelMapper().map(entity, IntraSessionFullDTO.class);
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG22);
 	}
 
 	@Override

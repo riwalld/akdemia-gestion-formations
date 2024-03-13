@@ -1,9 +1,12 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IInterSessionRepository;
+import af.cmr.indyli.akdemia.business.dao.ITrainingRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.InterSessionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.InterSessionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.InterSessionFullDTO;
+import af.cmr.indyli.akdemia.business.entity.InterSession;
 import af.cmr.indyli.akdemia.business.entity.InterSession;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IInterSessionService;
@@ -32,7 +35,10 @@ public class InterSessionServiceImpl extends AbstractAkdemiaServiceImpl<InterSes
 
 	@Resource(name = ConstsValues.ConstsDAO.INTER_SESSION)
 	private IInterSessionRepository sessionRepository;
-
+	
+	@Resource(name = ConstsValues.ConstsDAO.TRAINING_KEY)
+	private ITrainingRepository trainingRepository;
+	
 	public InterSessionServiceImpl() {
 		super(InterSession.class, InterSessionBasicDTO.class, InterSessionFullDTO.class);
 	}
@@ -45,15 +51,16 @@ public class InterSessionServiceImpl extends AbstractAkdemiaServiceImpl<InterSes
 
 	@Override
 	public InterSessionFullDTO create(InterSessionFullDTO view) throws AkdemiaBusinessException {
-		Optional<InterSession> session = this.getDAO().findById(view.getId());
+		
+		List<InterSession> session = this.getDAO().findByTrainingTitle(view.getTraining().getTitle());
 
-		if (session.isEmpty()) {
+		if (trainingRepository.findByTitle(view.getTraining().getTitle()) != null) {
 			view.setCreationDate(new Date());
-			InterSession entity = this.getDAO().saveAndFlush(this.getModelMapper().map(view, InterSession.class));
-			view.setId(entity.getId());
-			return view;
+			InterSession entity = this.getDAO()
+					.saveAndFlush(this.getModelMapper().map(view, InterSession.class));
+			return this.getModelMapper().map(entity, InterSessionFullDTO.class);
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG22);
 	}
 
 	@Override

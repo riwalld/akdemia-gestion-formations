@@ -2,6 +2,7 @@ package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IEmployeeSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -85,5 +87,10 @@ public class EmployeeSouscriptionImpl extends
 		} else {
 			this.getDAO().deleteById(id);
 		}
+	}
+	
+	@Override
+	public List<EmployeeSouscriptionFullDTO> findAllFull() {
+		return this.getDAO().findAll().stream().map(p -> this.getModelMapper().map(p, EmployeeSouscriptionFullDTO.class)).toList();
 	}
 }

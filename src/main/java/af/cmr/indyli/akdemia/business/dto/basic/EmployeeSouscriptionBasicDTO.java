@@ -17,7 +17,6 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 	private String status;
 	private Date creationDate;
 	private Date updateDate;
-	private IntraSession intraSession;
 
 	@Override
 	public Integer getId() {
@@ -55,13 +54,5 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 	@Override
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
-	}
-
-	public IntraSession getIntraSession() {
-		return intraSession;
-	}
-
-	public void setIntraSession(IntraSession intraSession) {
-		this.intraSession = intraSession;
 	}
 }

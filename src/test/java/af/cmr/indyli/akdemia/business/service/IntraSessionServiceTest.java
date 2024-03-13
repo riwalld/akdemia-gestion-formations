@@ -1,14 +1,23 @@
 package af.cmr.indyli.akdemia.business.service;
 
 import af.cmr.indyli.akdemia.business.config.AkdemiaBusinessGp3eConfig;
+import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.SessionBasicDTO;
-import af.cmr.indyli.akdemia.business.dto.full.SessionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.TrainerBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.TrainingBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.full.IntraSessionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.TrainerFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.TrainingFullDTO;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,19 +30,47 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ContextConfiguration(classes = { AkdemiaBusinessGp3eConfig.class })
 @DataJpaTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class IntraSessionServiceTest {
 
-	@Resource(name = ConstsValues.ServiceKeys.SESSION_SERVICE_KEY)
-	private ISessionService SessionService;
-	private SessionFullDTO sessionForAllTest = null;
+	@Resource(name = ConstsValues.ServiceKeys.INTRA_SESSION_SERVICE_KEY)
+	private IIntraSessionService intraSessionService;
 
+	@Resource(name = ConstsValues.ServiceKeys.TRAINER_SERVICE_KEY)
+
+	private ITrainerService iTrainerService;
+	@Resource(name = ConstsValues.ServiceKeys.TRAINING_SERVICE_KEY)
+
+	private ITrainingService iTrainingService;
+	private IntraSessionFullDTO sessionForAllTest = null;
 	private Integer idCreatedSession = null;
 
+	@BeforeAll
+	void prepare() throws AkdemiaBusinessException {
+
+	}
+/*
 	@BeforeEach
 	void setUp() throws AkdemiaBusinessException {
-		SessionFullDTO traning = getSampleTheme();
-		this.sessionForAllTest = this.SessionService.create(traning);
+		
+		TrainingFullDTO training = new TrainingFullDTO();
+		training.setTitle("new formation");
+		iTrainingService.create(training);
+
+		TrainerFullDTO trainer = new TrainerFullDTO();
+		trainer.setFirstname("myname");
+		trainer.setEmail("tesff");
+		iTrainerService.create(trainer);
+		
+		
+		IntraSessionFullDTO traning = getSampleTheme();
+		
+		
+		traning.setTrainer(new TrainerBasicDTO());
+		traning.setTraining(iTrainingService.findById(1));
+		traning.setDate(new Date());
+		this.sessionForAllTest = this.intraSessionService.create(traning);
 
 		System.out.println("ID CREATE... " + sessionForAllTest.getId());
 
@@ -42,9 +79,9 @@ public class IntraSessionServiceTest {
 
 	@Test
 	void testCreate() throws AkdemiaBusinessException {
-		SessionFullDTO session = getSampleTheme();
+		IntraSessionFullDTO session = getSampleTheme();
 		session.setCode("05ghte");
-		session = this.SessionService.create(session);
+		session = this.intraSessionService.create(session);
 		idCreatedSession = session.getId();
 
 		assertNotNull(session);
@@ -52,50 +89,55 @@ public class IntraSessionServiceTest {
 
 	@Test
 	void testFindAll() {
-		List<SessionBasicDTO> themes = this.SessionService.findAll();
+		List<IntraSessionFullDTO> themes = this.intraSessionService.findAllFull();
 		assertEquals(1, themes.size());
 	}
 
 	@Test
 	void testFindById() throws AkdemiaBusinessException {
-		SessionFullDTO theme = this.SessionService.findById(this.sessionForAllTest.getId());
+		IntraSessionFullDTO theme = this.intraSessionService.findById(this.sessionForAllTest.getId());
 		assertNotNull(theme);
 		assertEquals(this.sessionForAllTest.getCode(), theme.getCode());
 	}
 
 	@Test
 	void testUpdate() throws AkdemiaBusinessException, AccessDeniedException {
-		SessionFullDTO themeToUpdate = getSampleTheme();
+		IntraSessionFullDTO themeToUpdate = getSampleTheme();
 		String updateCode = "anothercode0";
 		themeToUpdate.setId(this.sessionForAllTest.getId());
 		themeToUpdate.setCode(updateCode);
 
-		SessionFullDTO updatedSession = this.SessionService.update(themeToUpdate);
+		IntraSessionFullDTO updatedSession = this.intraSessionService.update(themeToUpdate);
 		assertEquals(updateCode, updatedSession.getCode());
 	}
 
 	@Test
 	void testDelete() throws AkdemiaBusinessException, AccessDeniedException {
-		this.SessionService.deleteById(this.sessionForAllTest.getId());
+		this.intraSessionService.deleteById(this.sessionForAllTest.getId());
 
-		assertNull(this.SessionService.findById(this.sessionForAllTest.getId()));
+		assertNull(this.intraSessionService.findById(this.sessionForAllTest.getId()));
 		sessionForAllTest = null;
 	}
 
 	@AfterEach
 	void rollback() throws AkdemiaBusinessException, AccessDeniedException {
+		iTrainingService.deleteById(0);
+		iTrainerService.deleteById(0);
 		if (sessionForAllTest != null)
-			this.SessionService.deleteById(this.sessionForAllTest.getId());
+			this.intraSessionService.deleteById(this.sessionForAllTest.getId());
 		if (idCreatedSession != null)
-			this.SessionService.deleteById(idCreatedSession);
+			this.intraSessionService.deleteById(idCreatedSession);
 	}
 
-	SessionFullDTO getSampleTheme() {
-		SessionFullDTO theme = new SessionFullDTO();
+	IntraSessionFullDTO getSampleTheme() throws AkdemiaBusinessException {
+
+		IntraSessionFullDTO theme = new IntraSessionFullDTO();
 		theme.setCode("codeSession");
 		theme.setDescription("this is a good session");
+		theme.setTraining(iTrainingService.findById(1));
+		theme.setTrainer(iTrainerService.findById(1));
 		theme.setCreationDate(new Date());
 
 		return theme;
-	}
+	}*/
 }

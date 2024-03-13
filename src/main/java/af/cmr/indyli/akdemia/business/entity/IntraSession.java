@@ -22,5 +22,19 @@ public class IntraSession extends Session {
     )
     private Company company;
 
+	public List<EmployeeSouscription> getEmployeeSouscriptions() {
+		return employeeSouscriptions;
+	}
 
+	public void setEmployeeSouscriptions(List<EmployeeSouscription> employeeSouscriptions) {
+		this.employeeSouscriptions = employeeSouscriptions;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 }

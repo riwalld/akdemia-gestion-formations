@@ -1,8 +1,13 @@
 package af.cmr.indyli.akdemia.business.dao;
 
+import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.entity.InterSession;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository(value = ConstsValues.ConstsDAO.INTER_SESSION)
 public interface IInterSessionRepository extends JpaRepository<InterSession, Integer> {
-
+	@Query("from InterSession m where m.training.title =:trainingTitle")
+    List<InterSession> findByTrainingTitle(String trainingTitle);
 }

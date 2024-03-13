@@ -1,6 +1,8 @@
 package af.cmr.indyli.akdemia.business.dto.medium;
 
+import af.cmr.indyli.akdemia.business.dto.basic.EmployeeBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 
 /**
@@ -11,4 +13,20 @@ import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
  */
 
 public class EmployeeSouscriptionMediumDTO extends EmployeeSouscriptionBasicDTO {
+
+	private IntraSessionBasicDTO intraSession;
+	private EmployeeBasicDTO employee;
+	
+	public IntraSessionBasicDTO getIntraSession() {
+		return intraSession;
+	}
+	public void setIntraSession(IntraSessionBasicDTO intraSession) {
+		this.intraSession = intraSession;
+	}
+	public EmployeeBasicDTO getEmployee() {
+		return employee;
+	}
+	public void setEmployee(EmployeeBasicDTO employee) {
+		this.employee = employee;
+	}
 }

@@ -2,7 +2,7 @@ package af.cmr.indyli.akdemia.business.dto.basic;
 
 import af.cmr.indyli.akdemia.business.dto.IDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
-import af.cmr.indyli.akdemia.business.entity.IntraSession;
+import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
 
 import java.util.Date;
 
@@ -17,7 +17,11 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 	private String status;
 	private Date creationDate;
 	private Date updateDate;
-	private IntraSession intraSession;
+
+
+	public EmployeeSouscriptionBasicDTO() {
+
+	}
 
 	@Override
 	public Integer getId() {
@@ -57,11 +61,4 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 		this.updateDate = updateDate;
 	}
 
-	public IntraSession getIntraSession() {
-		return intraSession;
-	}
-
-	public void setIntraSession(IntraSession intraSession) {
-		this.intraSession = intraSession;
-	}
 }

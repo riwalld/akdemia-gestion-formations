@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+import org.aspectj.weaver.patterns.IfPointcut.IfFalsePointcut;
+
 /**
  * This class represents a Session entity. It encapsulates information about
  * an individual who is employed by a company and participates in intra-session,
@@ -37,10 +39,10 @@ public class Session implements IEntity {
 	@Column(name = "CREATION_DATE")
 	private Date creationDate;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "ID_AKDEMIA_TRAINER")
 	private Trainer trainer;
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(optional = false, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "ID_AKDEMIA_TRAINING")
 	private Training training;
 

@@ -25,10 +25,10 @@ public class ParticularSouscription implements IEntity {
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
 
-	@ManyToOne
-	@JoinColumn(name = "ID_AKDEMIA_INTER_SESSION")
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name = "ID_AKDEMIA_INTER_SESSION" )
 	private InterSession interSession;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "ID_AKDEMIA_PARTICULAR")
 	private Particular particular;
 
@@ -57,4 +57,29 @@ public class ParticularSouscription implements IEntity {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public InterSession getInterSession() {
+		return interSession;
+	}
+
+	public void setInterSession(InterSession interSession) {
+		this.interSession = interSession;
+	}
+
+	public Particular getParticular() {
+		return particular;
+	}
+
+	public void setParticular(Particular particular) {
+		this.particular = particular;
+	}
+	
 }

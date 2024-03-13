@@ -17,7 +17,7 @@ public class IntraSession extends Session {
     private List<EmployeeSouscription> employeeSouscriptions = new ArrayList<>();
 
     @ManyToOne(
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "ID_AKDEMIA_COMPANY"
     )
     private Company company;

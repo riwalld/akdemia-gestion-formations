@@ -24,12 +24,14 @@ public class EmployeeSouscription implements IEntity {
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "ID_AKDEMIA_INTRA_SESSION")
 	private IntraSession intraSession;
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "ID_AKDEMIA_EMPLOYEE")
 	private Employee employee;
+	
 	@Override
 	public Integer getId() {
 		return id;
@@ -79,4 +81,5 @@ public class EmployeeSouscription implements IEntity {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	
 }

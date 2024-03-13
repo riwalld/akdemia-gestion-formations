@@ -18,4 +18,22 @@ public class InterSession extends Session {
 
     @OneToMany(mappedBy = "interSession", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ParticularSouscription> particularSouscriptions = new ArrayList<>();
+
+	public Integer getMinParticipants() {
+		return minParticipants;
+	}
+
+	public void setMinParticipants(Integer minParticipants) {
+		this.minParticipants = minParticipants;
+	}
+
+	public List<ParticularSouscription> getParticularSouscriptions() {
+		return particularSouscriptions;
+	}
+
+	public void setParticularSouscriptions(List<ParticularSouscription> particularSouscriptions) {
+		this.particularSouscriptions = particularSouscriptions;
+	}
+    
+    
 }

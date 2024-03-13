@@ -2,7 +2,7 @@ package af.cmr.indyli.akdemia.business.dto.basic;
 
 import af.cmr.indyli.akdemia.business.dto.IDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
-import af.cmr.indyli.akdemia.business.entity.IntraSession;
+import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
 
 import java.util.Date;
 

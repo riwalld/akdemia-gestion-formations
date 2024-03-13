@@ -29,5 +29,5 @@ public class ConstBusinessRules {
 	public static final String RG19 = "RG19 : Une compagnie ayant au moins une session commandée ne doit pas être supprimé du système.";
 	public static final String RG20 = "RG20 : Un participant ne peut être ajouté à la même session plus d’une fois.";
 	public static final String RG21 = "RG21 : Le titre d’une formation doit être unique.";
-
+	public static final String RG22 = "RG22 : Une session ne peut-être créée si le titre de la formation associée n'existe pas.";
 }

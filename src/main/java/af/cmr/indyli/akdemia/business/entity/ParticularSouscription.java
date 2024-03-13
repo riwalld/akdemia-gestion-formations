@@ -25,10 +25,10 @@ public class ParticularSouscription implements IEntity {
 	@Column(name = "UPDATE_DATE")
 	private Date updateDate;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(optional = false, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "ID_AKDEMIA_INTER_SESSION" )
 	private InterSession interSession;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	@JoinColumn(name = "ID_AKDEMIA_PARTICULAR")
 	private Particular particular;
 

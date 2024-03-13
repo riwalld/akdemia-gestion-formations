@@ -18,11 +18,6 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 	private Date creationDate;
 	private Date updateDate;
 
-
-	public EmployeeSouscriptionBasicDTO() {
-
-	}
-
 	@Override
 	public Integer getId() {
 		return id;
@@ -60,5 +55,4 @@ public class EmployeeSouscriptionBasicDTO implements IDTO {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
 }

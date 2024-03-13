@@ -43,7 +43,7 @@ public class Training implements IEntity {
 	@JoinTable(name = "content", joinColumns = @JoinColumn(name = "ID_AKDEMIA_TRAINING"), inverseJoinColumns = @JoinColumn(name = "ID"))
 	private List<SubTopic> subtopics = new ArrayList<>();
 
-	@OneToMany(mappedBy = "training")
+	@OneToMany(mappedBy = "training", cascade = CascadeType.ALL)
 	private List<Session> sessions = new ArrayList<>();
 
 	@Override

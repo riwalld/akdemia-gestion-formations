@@ -17,10 +17,24 @@ public class IntraSession extends Session {
     private List<EmployeeSouscription> employeeSouscriptions = new ArrayList<>();
 
     @ManyToOne(
-            fetch = FetchType.LAZY)
+            fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "ID_AKDEMIA_COMPANY"
     )
     private Company company;
 
+	public List<EmployeeSouscription> getEmployeeSouscriptions() {
+		return employeeSouscriptions;
+	}
 
+	public void setEmployeeSouscriptions(List<EmployeeSouscription> employeeSouscriptions) {
+		this.employeeSouscriptions = employeeSouscriptions;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 }

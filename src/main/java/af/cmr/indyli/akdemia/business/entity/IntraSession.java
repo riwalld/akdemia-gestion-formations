@@ -13,11 +13,11 @@ import java.util.List;
 @Table(name = "AKDEMIA_INTRA_SESSION")
 public class IntraSession extends Session {
 
-    @OneToMany(mappedBy = "intraSession", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "intraSession", fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private List<EmployeeSouscription> employeeSouscriptions = new ArrayList<>();
 
     @ManyToOne(
-            fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+            fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinColumn(name = "ID_AKDEMIA_COMPANY"
     )
     private Company company;

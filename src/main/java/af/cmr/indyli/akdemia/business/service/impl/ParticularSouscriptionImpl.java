@@ -2,8 +2,9 @@ package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IParticularSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.ParticularSouscriptionBasicDTO;
-import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ParticularSouscriptionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.ParticularSouscriptionFullDTO;
+import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IParticularSouscriptionService;
@@ -47,16 +48,16 @@ public class ParticularSouscriptionImpl extends
 
 	@Override
 	public ParticularSouscriptionFullDTO create(ParticularSouscriptionFullDTO view) throws AkdemiaBusinessException {
-		Optional<ParticularSouscription> ParticularSouscription = this.getDAO().findById(view.getId());
-
-		if (ParticularSouscription.isEmpty()) {
+		
+		ParticularSouscription employeeSouscription = ParticularSouscriptionRepository.findByParticularNameAndSessionCode(view.getParticular().getLastname(), view.getInterSession().getCode());
+		
+		if (employeeSouscription == null) {
 			view.setCreationDate(new Date());
 			ParticularSouscription entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, ParticularSouscription.class));
-			view.setId(entity.getId());
-			return view;
+			return this.getModelMapper().map(entity, ParticularSouscriptionFullDTO.class);
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG20);
 	}
 
 	@Override

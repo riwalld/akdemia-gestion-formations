@@ -5,6 +5,8 @@ import af.cmr.indyli.akdemia.business.entity.Employee;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository(value = ConstsValues.ConstsDAO.EMPL_SOUSCRIPTION_DAO_KEY)
 public interface IEmployeeSouscriptionRepository extends JpaRepository<EmployeeSouscription, Integer> {
-
+	@Query("from EmployeeSouscription m where m.intraSession.code =:sessionCode and m.employee.lastname =:employeeName")
+	    EmployeeSouscription findByEmployeeNameAndSessionCode(@Param("employeeName") String employeeName, @Param("sessionCode") String sessionCode);
 }

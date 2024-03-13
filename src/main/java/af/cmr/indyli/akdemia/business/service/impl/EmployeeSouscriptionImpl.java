@@ -4,7 +4,9 @@ import af.cmr.indyli.akdemia.business.dao.IEmployeeSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.TrainerFullDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
+import af.cmr.indyli.akdemia.business.entity.Trainer;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IEmployeeSouscriptionService;
 import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
@@ -47,16 +49,16 @@ public class EmployeeSouscriptionImpl extends
 
 	@Override
 	public EmployeeSouscriptionFullDTO create(EmployeeSouscriptionFullDTO view) throws AkdemiaBusinessException {
-		Optional<EmployeeSouscription> employeeSouscription = this.getDAO().findById(view.getId());
-
-		if (employeeSouscription.isEmpty()) {
+		EmployeeSouscription employeeSouscription = EmployeeSouscriptionRepository.findByEmployeeNameAndSessionCode(view.getEmployee().getLastname(), view.getIntraSession().getCode());
+		
+		if (employeeSouscription == null) {
 			view.setCreationDate(new Date());
 			EmployeeSouscription entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, EmployeeSouscription.class));
-			view.setId(entity.getId());
-			return view;
+			return this.getModelMapper().map(entity, EmployeeSouscriptionFullDTO.class);
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG05);
+		
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG20);
 	}
 
 	@Override

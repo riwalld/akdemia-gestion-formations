@@ -16,7 +16,7 @@ public class InterSession extends Session {
     @Column(name = "MIN_PARTICIPANTS")
     Integer minParticipants;
 
-    @OneToMany(mappedBy = "interSession", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "interSession", fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private List<ParticularSouscription> particularSouscriptions = new ArrayList<>();
 
 	public Integer getMinParticipants() {

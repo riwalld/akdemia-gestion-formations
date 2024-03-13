@@ -1,5 +1,7 @@
 package af.cmr.indyli.akdemia.business.dto.medium;
 
+import af.cmr.indyli.akdemia.business.dto.basic.InterSessionBasicDTO;
+import af.cmr.indyli.akdemia.business.dto.basic.ParticularBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.ParticularSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 
@@ -11,4 +13,21 @@ import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
  */
 
 public class ParticularSouscriptionMediumDTO extends ParticularSouscriptionBasicDTO {
+	private static final long serialVersionUID = 1L;
+	private InterSessionBasicDTO interSession;
+	private ParticularBasicDTO particular;
+	
+	public InterSessionBasicDTO getInterSession() {
+		return interSession;
+	}
+	public void setInterSession(InterSessionBasicDTO interSession) {
+		this.interSession = interSession;
+	}
+	public ParticularBasicDTO getParticular() {
+		return particular;
+	}
+	public void setParticular(ParticularBasicDTO particularBasicDTO) {
+		this.particular = particularBasicDTO;
+	}
+	
 }

@@ -1,5 +1,6 @@
 package af.cmr.indyli.akdemia.business.dto.medium;
 
+import af.cmr.indyli.akdemia.business.dto.basic.CompanyBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.IntraSessionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.TrainerBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.basic.TrainingBasicDTO;
@@ -16,7 +17,14 @@ public class IntraSessionMediumDTO extends IntraSessionBasicDTO {
 	private static final long serialVersionUID = 1L;
 	private TrainingBasicDTO training;
 	private TrainerBasicDTO trainer;
+	private CompanyBasicDTO company;
 	
+	public CompanyBasicDTO getCompany() {
+		return company;
+	}
+	public void setCompany(CompanyBasicDTO company) {
+		this.company = company;
+	}
 	public TrainingBasicDTO getTraining() {
 		return training;
 	}

@@ -37,10 +37,10 @@ public class Session implements IEntity {
 	@Column(name = "CREATION_DATE")
 	private Date creationDate;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "ID_AKDEMIA_TRAINER")
 	private Trainer trainer;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "ID_AKDEMIA_TRAINING")
 	private Training training;
 

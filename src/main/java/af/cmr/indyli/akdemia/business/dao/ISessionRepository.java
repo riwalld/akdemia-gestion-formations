@@ -1,7 +1,6 @@
 package af.cmr.indyli.akdemia.business.dao;
 
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
-import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.entity.Session;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -18,4 +18,6 @@ public interface IEmployeeSouscriptionService
 
 	List<EmployeeSouscriptionFullDTO> findAllFull();
 
+	List<EmployeeSouscriptionFullDTO> findBySession(Integer id);
+
 }

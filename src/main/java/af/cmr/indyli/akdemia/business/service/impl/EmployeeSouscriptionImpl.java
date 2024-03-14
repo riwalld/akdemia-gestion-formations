@@ -2,11 +2,11 @@ package af.cmr.indyli.akdemia.business.service.impl;
 
 import af.cmr.indyli.akdemia.business.dao.IEmployeeSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
-import af.cmr.indyli.akdemia.business.dto.full.EmployeeFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
-import af.cmr.indyli.akdemia.business.dto.full.TrainerFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
-import af.cmr.indyli.akdemia.business.entity.Trainer;
+import af.cmr.indyli.akdemia.business.entity.IntraSession;
+import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IEmployeeSouscriptionService;
 import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.nio.file.AccessDeniedException;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service implementation class for managing {@link EmployeeSouscription}
@@ -36,7 +35,7 @@ public class EmployeeSouscriptionImpl extends
 		implements IEmployeeSouscriptionService {
 
 	@Resource(name = ConstsValues.ConstsDAO.EMPL_SOUSCRIPTION_DAO_KEY)
-	private IEmployeeSouscriptionRepository EmployeeSouscriptionRepository;
+	private IEmployeeSouscriptionRepository employeeSouscriptionRepository;
 
 	public EmployeeSouscriptionImpl() {
 		super(EmployeeSouscription.class, EmployeeSouscriptionBasicDTO.class, EmployeeSouscriptionFullDTO.class);
@@ -44,20 +43,20 @@ public class EmployeeSouscriptionImpl extends
 
 	@Override
 	public IEmployeeSouscriptionRepository getDAO() {
-		return this.EmployeeSouscriptionRepository;
+		return this.employeeSouscriptionRepository;
 	}
 
 	@Override
 	public EmployeeSouscriptionFullDTO create(EmployeeSouscriptionFullDTO view) throws AkdemiaBusinessException {
-		EmployeeSouscription employeeSouscription = EmployeeSouscriptionRepository.findByEmployeeNameAndSessionCode(view.getEmployee().getLastname(), view.getIntraSession().getCode());
 		
+		EmployeeSouscription employeeSouscription = employeeSouscriptionRepository.findByEmployeeNameAndSessionCode(view.getEmployee().getLastname(), view.getIntraSession().getCode());
 		if (employeeSouscription == null) {
 			view.setCreationDate(new Date());
 			EmployeeSouscription entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, EmployeeSouscription.class));
+
 			return this.getModelMapper().map(entity, EmployeeSouscriptionFullDTO.class);
 		}
-		
 		throw new AkdemiaBusinessException(ConstBusinessRules.RG20);
 	}
 
@@ -95,4 +94,10 @@ public class EmployeeSouscriptionImpl extends
 	public List<EmployeeSouscriptionFullDTO> findAllFull() {
 		return this.getDAO().findAll().stream().map(p -> this.getModelMapper().map(p, EmployeeSouscriptionFullDTO.class)).toList();
 	}
+
+	@Override
+	public List<EmployeeSouscriptionFullDTO> findBySession(Integer id) {
+		return employeeSouscriptionRepository.findByIntraSessionId(id).stream().map(p -> this.getModelMapper().map(p, EmployeeSouscriptionFullDTO.class)).toList();
+	}
+	
 }

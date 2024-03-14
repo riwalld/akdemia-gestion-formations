@@ -25,6 +25,7 @@ public class EmployeeBasicDTO implements IDTO {
 	private String highestDiploma;
 	private Date birthDate;
 
+	
 	public EmployeeBasicDTO() {
 	}
 

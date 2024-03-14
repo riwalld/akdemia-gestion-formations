@@ -110,4 +110,10 @@ public class ParticularSouscriptionImpl extends
 	public List<ParticularSouscriptionFullDTO> findBySession(Integer id) {
 		return particularSouscriptionRepository.findByInterSessionId(id).stream().map(p -> this.getModelMapper().map(p, ParticularSouscriptionFullDTO.class)).toList();
 	}
+
+	@Override
+	public void deleteByIdSessionAndIdParticular(int idSession, int idParticipant) {
+		particularSouscriptionRepository.deleteByInterSessionIdAndParticularId(idSession, idParticipant);
+		
+	}
 }

@@ -18,9 +18,9 @@ public class Trainer extends User {
 	@Column(name = "CV_LINK")
 	private String cvLink;
 	@Column(name = "FIRSTNAME")
-	private String firstName;
+	private String firstname;
 	@Column(name = "LASTNAME")
-	private String lastName;
+	private String lastname;
 	@Column(name = "GENDER")
 	private String gender;
 
@@ -43,20 +43,20 @@ public class Trainer extends User {
 		this.cvLink = cvLink;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getGender() {

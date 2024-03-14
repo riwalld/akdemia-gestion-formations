@@ -55,6 +55,7 @@ public class InterSessionServiceImpl extends AbstractAkdemiaServiceImpl<InterSes
 		List<InterSession> session = this.getDAO().findByTrainingTitle(view.getTraining().getTitle());
 
 		if (trainingRepository.findByTitle(view.getTraining().getTitle()) != null) {
+			view.setStatus(ConstsValues.SessionStatus.WAITING);
 			view.setCreationDate(new Date());
 			InterSession entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, InterSession.class));

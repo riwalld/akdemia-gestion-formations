@@ -1,9 +1,11 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import af.cmr.indyli.akdemia.business.dao.IInterSessionRepository;
 import af.cmr.indyli.akdemia.business.dao.IParticularSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.ParticularSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ParticularSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.dto.full.ParticularSouscriptionFullDTO;
+import af.cmr.indyli.akdemia.business.entity.InterSession;
 import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
@@ -35,26 +37,35 @@ public class ParticularSouscriptionImpl extends
 		implements IParticularSouscriptionService {
 
 	@Resource(name = ConstsValues.ConstsDAO.PART_SOUSCRIPTION_DAO_KEY)
-	private IParticularSouscriptionRepository ParticularSouscriptionRepository;
-
+	private IParticularSouscriptionRepository particularSouscriptionRepository;
+	
+	@Resource(name = ConstsValues.ConstsDAO.INTER_SESSION)
+	private IInterSessionRepository interSessionRepository;
+	
 	public ParticularSouscriptionImpl() {
 		super(ParticularSouscription.class, ParticularSouscriptionBasicDTO.class, ParticularSouscriptionFullDTO.class);
 	}
 
 	@Override
 	public IParticularSouscriptionRepository getDAO() {
-		return this.ParticularSouscriptionRepository;
+		return this.particularSouscriptionRepository;
 	}
 
 	@Override
 	public ParticularSouscriptionFullDTO create(ParticularSouscriptionFullDTO view) throws AkdemiaBusinessException {
 		
-		ParticularSouscription employeeSouscription = ParticularSouscriptionRepository.findByParticularNameAndSessionCode(view.getParticular().getLastname(), view.getInterSession().getCode());
-		
+		ParticularSouscription employeeSouscription = particularSouscriptionRepository.findByParticularNameAndSessionCode(view.getParticular().getLastname(), view.getInterSession().getCode());
+		System.out.println(particularSouscriptionRepository.findByInterSession(view.getInterSession().getCode()));
 		if (employeeSouscription == null) {
 			view.setCreationDate(new Date());
+			if(particularSouscriptionRepository.findByInterSession(view.getInterSession().getCode()).size()>= particularSouscriptionRepository.findMinPArticipants(view.getInterSession().getCode()));{
+				InterSession interSession =interSessionRepository.findById(view.getInterSession().getId()).get();
+				interSession.setStatus(ConstsValues.SessionStatus.CONFIRMED);
+				interSessionRepository.save(interSession);
+			}
 			ParticularSouscription entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, ParticularSouscription.class));
+
 			return this.getModelMapper().map(entity, ParticularSouscriptionFullDTO.class);
 		}
 		throw new AkdemiaBusinessException(ConstBusinessRules.RG20);
@@ -93,5 +104,10 @@ public class ParticularSouscriptionImpl extends
 	@Override
 	public List<ParticularSouscriptionFullDTO> findAllFull() {
 		return this.getDAO().findAll().stream().map(p -> this.getModelMapper().map(p, ParticularSouscriptionFullDTO.class)).toList();
+	}
+	
+	@Override
+	public List<ParticularSouscriptionFullDTO> findBySession(Integer id) {
+		return particularSouscriptionRepository.findByInterSessionId(id).stream().map(p -> this.getModelMapper().map(p, ParticularSouscriptionFullDTO.class)).toList();
 	}
 }

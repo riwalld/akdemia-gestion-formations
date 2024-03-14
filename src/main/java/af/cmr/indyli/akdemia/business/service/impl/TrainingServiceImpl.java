@@ -49,14 +49,13 @@ public class TrainingServiceImpl extends AbstractAkdemiaServiceImpl<Training, Tr
 	@Override
 	public TrainingFullDTO create(TrainingFullDTO view) throws AkdemiaBusinessException {
 		Training training = this.getDAO().findByTitle(view.getTitle());
-
 		if (training == null) {
 			view.setCreationDate(new Date());
 			Training entity = this.getDAO().saveAndFlush(this.getModelMapper().map(view, Training.class));
 			view.setId(entity.getId());
 			return view;
 		}
-		throw new AkdemiaBusinessException(ConstBusinessRules.RG09);
+		throw new AkdemiaBusinessException(ConstBusinessRules.RG04);
 	}
 
 	@Override

@@ -36,6 +36,6 @@ public interface IParticularSouscriptionRepository extends JpaRepository<Particu
 	@Modifying
 	@Transactional
 	@Query("delete from ParticularSouscription m where m.interSession.id = :interSessionId and m.particular.id = :particularId")
-	void deleteByInterSessionIdAndParticularId(@Param("interSessionId") Integer interSessionId, @Param("particularId") Integer particularId);
+	void deleteByIdSessionAndIdParticular(@Param("interSessionId") Integer interSessionId, @Param("particularId") Integer particularId);
 	
 }

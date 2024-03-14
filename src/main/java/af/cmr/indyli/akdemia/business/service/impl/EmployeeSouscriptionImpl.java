@@ -99,5 +99,12 @@ public class EmployeeSouscriptionImpl extends
 	public List<EmployeeSouscriptionFullDTO> findBySession(Integer id) {
 		return employeeSouscriptionRepository.findByIntraSessionId(id).stream().map(p -> this.getModelMapper().map(p, EmployeeSouscriptionFullDTO.class)).toList();
 	}
+
+	@Override
+	public void deleteByIdSessionAndIdParticular(int idSession, int idParticipant) {
+		employeeSouscriptionRepository.deleteByIdSessionAndIdEmployee(idSession, idParticipant);		
+	}
+
+	
 	
 }

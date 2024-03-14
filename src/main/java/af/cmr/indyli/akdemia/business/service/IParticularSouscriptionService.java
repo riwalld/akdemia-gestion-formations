@@ -21,5 +21,4 @@ public interface IParticularSouscriptionService
 	List<ParticularSouscriptionFullDTO> findBySession(Integer id);
 
 	void deleteByIdSessionAndIdParticular(int idSession, int idParticipant);
-
 }

@@ -20,4 +20,6 @@ public interface IEmployeeSouscriptionService
 
 	List<EmployeeSouscriptionFullDTO> findBySession(Integer id);
 
+	void deleteByIdSessionAndIdParticular(int idSession, int idParticipant);
+
 }

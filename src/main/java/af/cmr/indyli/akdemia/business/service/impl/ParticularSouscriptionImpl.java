@@ -113,7 +113,7 @@ public class ParticularSouscriptionImpl extends
 
 	@Override
 	public void deleteByIdSessionAndIdParticular(int idSession, int idParticipant) {
-		particularSouscriptionRepository.deleteByInterSessionIdAndParticularId(idSession, idParticipant);
+		particularSouscriptionRepository.deleteByIdSessionAndIdParticular(idSession, idParticipant);
 		
 	}
 }

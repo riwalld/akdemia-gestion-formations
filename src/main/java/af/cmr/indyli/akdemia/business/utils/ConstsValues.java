@@ -65,5 +65,8 @@ public class ConstsValues {
         public static final String PARTICULAR_SOUSCRIPTION_SERVICE_KEY = "particularSouscriptionService";
         public static final String EMPLOYEE_SOUSCRIPTION_SERVICE_KEY = "employeeSouscriptionService";
 	}
-
+	public static final class SessionStatus {
+		public static final String WAITING = "WAITING";
+		public static final String CONFIRMED = "CONFIRMED";
+	}
 }

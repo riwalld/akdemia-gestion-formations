@@ -18,4 +18,6 @@ public interface IParticularSouscriptionService
 
 	List<ParticularSouscriptionFullDTO> findAllFull();
 
+	List<ParticularSouscriptionFullDTO> findBySession(Integer id);
+
 }

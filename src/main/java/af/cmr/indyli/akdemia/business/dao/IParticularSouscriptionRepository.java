@@ -3,6 +3,9 @@ package af.cmr.indyli.akdemia.business.dao;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,5 +20,14 @@ public interface IParticularSouscriptionRepository extends JpaRepository<Particu
 	
 	@Query("from ParticularSouscription m where m.interSession.code =:code and m.particular.lastname =:lastname")
 	ParticularSouscription findByParticularNameAndSessionCode(String lastname, String code);
+	
+	@Query("from ParticularSouscription m where m.interSession.code =:code")
+	List<ParticularSouscription> findByInterSession(String code);
+	
+	@Query("select interSession.minParticipants from ParticularSouscription m where m.interSession.code =:code")
+	Integer findMinPArticipants(String code);
 
+	@Query("from ParticularSouscription m where m.interSession.id =:id")
+	List<ParticularSouscription> findByInterSessionId(Integer id);
+	
 }

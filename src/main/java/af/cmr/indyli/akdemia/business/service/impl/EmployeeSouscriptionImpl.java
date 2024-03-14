@@ -1,11 +1,15 @@
 package af.cmr.indyli.akdemia.business.service.impl;
 
+import java.nio.file.AccessDeniedException;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
 import af.cmr.indyli.akdemia.business.dao.IEmployeeSouscriptionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
-import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
-import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
-import af.cmr.indyli.akdemia.business.entity.IntraSession;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IEmployeeSouscriptionService;
@@ -13,12 +17,6 @@ import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
 import af.cmr.indyli.akdemia.business.utils.ConstRejectBusinessMessage;
 import af.cmr.indyli.akdemia.business.utils.ConstsValues;
 import jakarta.annotation.Resource;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
-
-import java.nio.file.AccessDeniedException;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Service implementation class for managing {@link EmployeeSouscription}
@@ -104,7 +102,5 @@ public class EmployeeSouscriptionImpl extends
 	public void deleteByIdSessionAndIdParticular(int idSession, int idParticipant) {
 		employeeSouscriptionRepository.deleteByIdSessionAndIdEmployee(idSession, idParticipant);		
 	}
-
-	
 	
 }

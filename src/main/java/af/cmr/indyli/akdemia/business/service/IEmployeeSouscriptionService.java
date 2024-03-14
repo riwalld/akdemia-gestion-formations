@@ -7,6 +7,7 @@ import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
 
+
 /**
  * Interface extending the IAbstractAkdemiaService interface for managing user
  * EmployeeSouscription, providing specific operations for {@link EmployeeSouscription} entities.
@@ -21,5 +22,6 @@ public interface IEmployeeSouscriptionService
 	List<EmployeeSouscriptionFullDTO> findBySession(Integer id);
 
 	void deleteByIdSessionAndIdParticular(int idSession, int idParticipant);
+
 
 }

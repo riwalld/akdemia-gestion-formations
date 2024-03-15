@@ -53,19 +53,19 @@ public class ParticularSouscriptionImpl extends
 
 	@Override
 	public ParticularSouscriptionFullDTO create(ParticularSouscriptionFullDTO view) throws AkdemiaBusinessException {
+		InterSession interSession =interSessionRepository.findById(view.getInterSession().getId()).get();
+		view.getInterSession().setCode(interSession.getCode());
 		
-		ParticularSouscription employeeSouscription = particularSouscriptionRepository.findByParticularNameAndSessionCode(view.getParticular().getLastname(), view.getInterSession().getCode());
-		System.out.println(particularSouscriptionRepository.findByInterSession(view.getInterSession().getCode()));
-		if (employeeSouscription == null) {
+		ParticularSouscription particularSouscription = particularSouscriptionRepository.findByParticularNameAndSessionCode(view.getParticular().getLastname(), view.getInterSession().getCode());
+		if (particularSouscription == null) {
 			view.setCreationDate(new Date());
-			if(particularSouscriptionRepository.findByInterSession(view.getInterSession().getCode()).size()>= particularSouscriptionRepository.findMinPArticipants(view.getInterSession().getCode()));{
-				InterSession interSession =interSessionRepository.findById(view.getInterSession().getId()).get();
-				interSession.setStatus(ConstsValues.SessionStatus.CONFIRMED);
-				interSessionRepository.save(interSession);
-			}
 			ParticularSouscription entity = this.getDAO()
 					.saveAndFlush(this.getModelMapper().map(view, ParticularSouscription.class));
-
+			
+			if(particularSouscriptionRepository.findByInterSession(view.getInterSession().getCode()).size()>= particularSouscriptionRepository.findMinPArticipants(view.getInterSession().getCode())){
+				interSession.setStatus(ConstsValues.SessionStatus.CONFIRMED);
+			} 
+			interSessionRepository.save(interSession);
 			return this.getModelMapper().map(entity, ParticularSouscriptionFullDTO.class);
 		}
 		throw new AkdemiaBusinessException(ConstBusinessRules.RG20);
@@ -93,11 +93,18 @@ public class ParticularSouscriptionImpl extends
 	@Override
 	public void deleteById(int id) throws AkdemiaBusinessException, AccessDeniedException {
 		var tmpParticularSouscription = this.findById(id);
-
+		
+		InterSession interSession =interSessionRepository.findById(particularSouscriptionRepository.findById(id).get().getInterSession().getId()).get();
 		if (tmpParticularSouscription == null) {
 			throw new AkdemiaBusinessException(ConstRejectBusinessMessage.DELETE_OBJECT_NOT_FOUND);
 		} else {
 			this.getDAO().deleteById(id);
+			System.out.println(particularSouscriptionRepository.findByInterSession(interSession.getCode()).size());
+			System.out.println(particularSouscriptionRepository.findMinPArticipants(interSession.getCode()));
+			if(particularSouscriptionRepository.findByInterSession(interSession.getCode()).size()< particularSouscriptionRepository.findMinPArticipants(interSession.getCode())){
+				interSession.setStatus(ConstsValues.SessionStatus.WAITING);
+				interSessionRepository.save(interSession);
+			} 
 		}
 	}
 	
@@ -114,6 +121,12 @@ public class ParticularSouscriptionImpl extends
 	@Override
 	public void deleteByIdSessionAndIdParticular(int idSession, int idParticipant) {
 		particularSouscriptionRepository.deleteByIdSessionAndIdParticular(idSession, idParticipant);
+		InterSession interSession =interSessionRepository.findById(idSession).get();
+
+		if(particularSouscriptionRepository.findByInterSession(interSession.getCode()).size()< particularSouscriptionRepository.findMinPArticipants(interSession.getCode())){
+			interSession.setStatus(ConstsValues.SessionStatus.WAITING);
+			interSessionRepository.save(interSession);
+		} 
 		
 	}
 }

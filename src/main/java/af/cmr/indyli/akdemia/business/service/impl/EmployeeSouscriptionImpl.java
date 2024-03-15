@@ -8,9 +8,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import af.cmr.indyli.akdemia.business.dao.IEmployeeSouscriptionRepository;
+import af.cmr.indyli.akdemia.business.dao.IIntraSessionRepository;
 import af.cmr.indyli.akdemia.business.dto.basic.EmployeeSouscriptionBasicDTO;
 import af.cmr.indyli.akdemia.business.dto.full.EmployeeSouscriptionFullDTO;
+import af.cmr.indyli.akdemia.business.dto.full.ParticularSouscriptionFullDTO;
 import af.cmr.indyli.akdemia.business.entity.EmployeeSouscription;
+import af.cmr.indyli.akdemia.business.entity.InterSession;
+import af.cmr.indyli.akdemia.business.entity.ParticularSouscription;
 import af.cmr.indyli.akdemia.business.exception.AkdemiaBusinessException;
 import af.cmr.indyli.akdemia.business.service.IEmployeeSouscriptionService;
 import af.cmr.indyli.akdemia.business.utils.ConstBusinessRules;
@@ -34,7 +38,9 @@ public class EmployeeSouscriptionImpl extends
 
 	@Resource(name = ConstsValues.ConstsDAO.EMPL_SOUSCRIPTION_DAO_KEY)
 	private IEmployeeSouscriptionRepository employeeSouscriptionRepository;
-
+	@Resource(name = ConstsValues.ConstsDAO.INTRA_SESSION)
+	private IIntraSessionRepository intraSessionRepository;
+	
 	public EmployeeSouscriptionImpl() {
 		super(EmployeeSouscription.class, EmployeeSouscriptionBasicDTO.class, EmployeeSouscriptionFullDTO.class);
 	}
@@ -46,7 +52,7 @@ public class EmployeeSouscriptionImpl extends
 
 	@Override
 	public EmployeeSouscriptionFullDTO create(EmployeeSouscriptionFullDTO view) throws AkdemiaBusinessException {
-		
+		view.getIntraSession().setCode(intraSessionRepository.findById(view.getIntraSession().getId()).get().getCode());
 		EmployeeSouscription employeeSouscription = employeeSouscriptionRepository.findByEmployeeNameAndSessionCode(view.getEmployee().getLastname(), view.getIntraSession().getCode());
 		if (employeeSouscription == null) {
 			view.setCreationDate(new Date());

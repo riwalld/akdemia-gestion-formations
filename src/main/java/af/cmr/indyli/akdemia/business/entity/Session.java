@@ -32,7 +32,7 @@ public class Session implements IEntity {
 	private String status;
 	@Column(name = "SESSION_DATE")
 	private Date date;
-	@Column(name = "LACATION")
+	@Column(name = "LOCATION")
 	private String location;
 	@Column(name = "SESSION_SCORE")
 	private Integer sessionScore;
